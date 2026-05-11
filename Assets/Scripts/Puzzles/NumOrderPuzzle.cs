@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-
+using System.Collections;
 public class NumOrderPuzzle : MonoBehaviour
 {
     public int[] correctOrder = { 1, 9, 8, 7, 2 };
@@ -10,6 +10,7 @@ public class NumOrderPuzzle : MonoBehaviour
     private List<int> currentOrder = new List<int>();
 
     [SerializeField] TMP_Text codeDisplayText;
+    [SerializeField] GameObject wrongCodeText;
 
     public void PressButton(Button clickedButton)
     {
@@ -53,12 +54,24 @@ public class NumOrderPuzzle : MonoBehaviour
     {
         Debug.Log("Wrong code!");
 
+        StartCoroutine(ShowWrongCode());
+        
         CleanCode();
+    }
+
+    IEnumerator ShowWrongCode()
+    {
+        wrongCodeText.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        wrongCodeText.SetActive(false);
     }
 
     void PuzzleSolved()
     {
         Debug.Log("Puzzle Solved!");
+        gameObject.SetActive(false);
     }
 
     void UpdateDisplay()
