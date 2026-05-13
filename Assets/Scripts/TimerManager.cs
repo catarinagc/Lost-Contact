@@ -12,6 +12,7 @@ public class TimerManager : MonoBehaviour
     void Start()
     {
         currentTime = totalMinutes * 60 + totalSeconds;
+        Debug.LogWarning("TIMER STARTED! GET OUT!");
     }
 
     void Update()

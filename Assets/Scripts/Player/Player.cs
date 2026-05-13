@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
     //
-    [SerializeField] private float movespeed;
+    [SerializeField] private float movespeed = 0.0f;
     [SerializeField] private float crouchMovespeed = 1.0f;
-    [SerializeField] private float walkSlowMovespeed = 2.0f;
+    //[SerializeField] private float walkSlowMovespeed = 2.0f;
     [SerializeField] private float walkMovespeed = 5.0f;
     [SerializeField] private float sprintMovespeed = 7.0f;
     [SerializeField] private float mouseSensitivity = 100.0f;
@@ -63,15 +63,17 @@ public class Player : MonoBehaviour
         {
             movespeed = sprintMovespeed;
         }
-        else if (Input.GetKey(KeyCode.LeftControl) && movespeed == walkMovespeed)
+        else if (Input.GetKey(KeyCode.LeftControl))
         {
             movespeed = crouchMovespeed;
-            capsuleCollider.height = 1f;
+            capsuleCollider.transform.localScale = crouchedScale;
+            transform.localScale = crouchedScale;
         }
         else
         {
             movespeed = walkMovespeed;
-            capsuleCollider.height = 2f;
+            capsuleCollider.transform.localScale = nonCrouchedScale;
+            transform.localScale = nonCrouchedScale;
         }
     }
 
