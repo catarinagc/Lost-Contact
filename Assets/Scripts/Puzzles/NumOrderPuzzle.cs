@@ -11,6 +11,7 @@ public class NumOrderPuzzle : MonoBehaviour
 
     [SerializeField] TMP_Text codeDisplayText;
     [SerializeField] GameObject wrongCodeText;
+    [SerializeField] PuzzleTerminal terminal;
 
     public void PressButton(Button clickedButton)
     {
@@ -71,7 +72,7 @@ public class NumOrderPuzzle : MonoBehaviour
     void PuzzleSolved()
     {
         Debug.Log("Puzzle Solved!");
-        gameObject.SetActive(false);
+        terminal.ClosePuzzle();
     }
 
     void UpdateDisplay()

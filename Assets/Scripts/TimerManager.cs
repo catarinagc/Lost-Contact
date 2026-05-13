@@ -20,7 +20,7 @@ public class TimerManager : MonoBehaviour
         {
             if (currentTime > 0)
             {
-                currentTime -= Time.deltaTime;
+                currentTime -= Time.unscaledDeltaTime;
 
                 if (currentTime < 0)
                     currentTime = 0;
@@ -36,7 +36,7 @@ public class TimerManager : MonoBehaviour
         }
         if (reverseTimer)
         {
-            currentTime += Time.deltaTime;
+            currentTime += Time.unscaledDeltaTime;
             UpdateTimerDisplay(currentTime);
         }
     }

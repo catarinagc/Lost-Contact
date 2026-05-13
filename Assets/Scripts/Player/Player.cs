@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +27,7 @@ public class Player : MonoBehaviour
     private Vector3 nonCrouchedScale;
     //
     private bool canInteract = false;
+    private bool canMove = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,8 +50,7 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        
+    {     
         MovePlayer();
     }
 
@@ -64,21 +63,15 @@ public class Player : MonoBehaviour
         {
             movespeed = sprintMovespeed;
         }
-        else if (Input.GetKey(KeyCode.LeftAlt))
-        {
-            movespeed = walkSlowMovespeed;
-        }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (Input.GetKey(KeyCode.LeftControl) && movespeed == walkMovespeed)
         {
             movespeed = crouchMovespeed;
-            capsuleCollider.transform.localScale = crouchedScale;
-            transform.localScale = crouchedScale;
+            capsuleCollider.height = 1f;
         }
         else
         {
             movespeed = walkMovespeed;
-            capsuleCollider.transform.localScale = nonCrouchedScale;
-            transform.localScale = nonCrouchedScale;
+            capsuleCollider.height = 2f;
         }
     }
 
@@ -87,11 +80,39 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             canInteract = true;
+            //pensar depois se vale a pena fazer tudo com triggers ou com rays
+            //por enquanto manter objs separados para nao fazer overlap das interacoes
+            TryInteract();
+        }
+    }
+
+    private void TryInteract()
+    {
+        Ray ray =
+            playerCamera.ViewportPointToRay(
+                new Vector3(0.5f, 0.5f, 0f)
+            );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+        {
+            IInteractable interactable =
+                hit.collider.GetComponent<IInteractable>();
+
+            if (interactable != null)
+            {
+                canMove = false;
+                interactable.Interact();
+            }
         }
     }
 
     private void MovePlayer()
     {
+        if (!canMove)
+        {
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            return;
+        }
         Vector3 forward = playerCamera.transform.forward;
         Vector3 right = playerCamera.transform.right;
         forward.y = 0f;
@@ -109,6 +130,8 @@ public class Player : MonoBehaviour
 
     private void MouseLookAround()
     {
+        if (!canMove)
+            return;
         mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
         //
@@ -127,5 +150,10 @@ public class Player : MonoBehaviour
     public void SetCanInteract(bool newValue)
     {
         canInteract = newValue;
+    }
+
+    public void SetMovementEnabled()
+    {
+        canMove = true;
     }
 }
