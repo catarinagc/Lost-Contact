@@ -6012,7 +6012,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 536705362}
-  - component: {fileID: 536705364}
   m_Layer: 0
   m_Name: Room15
   m_TagString: Untagged
@@ -6042,27 +6041,6 @@ Transform:
   - {fileID: 881622936}
   m_Father: {fileID: 893116223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &536705364
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536705361}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 6.2443542, y: 5, z: 18.27}
-  m_Center: {x: 93.12651, y: 0, z: 3.4}
 --- !u!1 &559708753
 GameObject:
   m_ObjectHideFlags: 0
@@ -6256,6 +6234,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9028209119808234652, guid: 618bff1fb5ce4514ca2a52e6d4c55c6e, type: 3}
   m_PrefabInstance: {fileID: 565860542}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &565860544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8619764064756490085, guid: 618bff1fb5ce4514ca2a52e6d4c55c6e, type: 3}
+  m_PrefabInstance: {fileID: 565860542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b8e52385fda81409097ffcd6ef97f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
 --- !u!1 &579047124
 GameObject:
   m_ObjectHideFlags: 0
@@ -23002,6 +22991,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2027758848}
   - component: {fileID: 2027758849}
+  - component: {fileID: 2027758851}
+  - component: {fileID: 2027758850}
   m_Layer: 0
   m_Name: Room16
   m_TagString: Untagged
@@ -23045,6 +23036,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleRoom
   doorsToLock:
   - {fileID: 1855709231}
+--- !u!114 &2027758850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027758847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba10b168366299640a7d39c7623c902a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleRoom
+  doorsToLock:
+  - {fileID: 1855709231}
+  - {fileID: 565860544}
+--- !u!65 &2027758851
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027758847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14, y: 6.6, z: 11.09}
+  m_Center: {x: 116.6, y: 0, z: -14.3}
 --- !u!1 &2030703935
 GameObject:
   m_ObjectHideFlags: 0
