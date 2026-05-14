@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-
+using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float walkMovespeed = 5.0f;
     [SerializeField] private float sprintMovespeed = 7.0f;
     [SerializeField] private float mouseSensitivity = 100.0f;
+    [SerializeField] List<GameObject> possibleStartPos;
     private Vector3 moveDirection;
     private float horizontal;
     private float vertical;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         movespeed = walkMovespeed;
         crouchedScale = new Vector3(1.0f, 0.5f, 1.0f);
         nonCrouchedScale = new Vector3(1.0f, 1.0f, 1.0f);
+        ChooseStartPos();
     }
 
     // Update is called once per frame
@@ -52,6 +54,14 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {     
         MovePlayer();
+    }
+
+    private void ChooseStartPos()
+    {
+        int randomIndex = Random.Range(0, possibleStartPos.Count);
+        GameObject chosenPos = possibleStartPos[randomIndex];
+        transform.position = chosenPos.transform.position;
+        transform.rotation = chosenPos.transform.rotation;
     }
 
     private void MovementInput()

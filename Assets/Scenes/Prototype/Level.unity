@@ -7136,6 +7136,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680180416}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &691442117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 691442118}
+  m_Layer: 0
+  m_Name: PossibleStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &691442118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691442117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.23, y: 0, z: 4.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1692532545}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694278849
 GameObject:
   m_ObjectHideFlags: 0
@@ -13699,6 +13730,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1205083755066009248, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205083755066009248, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: mouseSensitivity
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: possibleStartPos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: 'possibleStartPos.Array.data[0]'
+      value: 
+      objectReference: {fileID: 691442117}
+    - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: 'possibleStartPos.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2035274266}
+    - target: {fileID: 5180324815093098182, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7402234155139070479, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
       propertyPath: m_Name
       value: Player
@@ -18008,6 +18067,7 @@ Transform:
   - {fileID: 1107053696}
   - {fileID: 904517917}
   - {fileID: 1100704130}
+  - {fileID: 691442118}
   m_Father: {fileID: 893116223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1694012901
@@ -22832,7 +22892,39 @@ Transform:
   - {fileID: 1773772527}
   - {fileID: 34379249}
   - {fileID: 851937897}
+  - {fileID: 2035274267}
   m_Father: {fileID: 893116223}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2035274266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035274267}
+  m_Layer: 0
+  m_Name: PossibleStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035274267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035274266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6, y: 0, z: 59.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2030703936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053966858
 GameObject:
