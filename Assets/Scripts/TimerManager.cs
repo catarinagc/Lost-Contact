@@ -42,6 +42,14 @@ public class TimerManager : MonoBehaviour
         }
     }
 
+    public void WinGame()
+    {
+        reverseTimer = false;
+        timerRunning = false;
+        timerText.color = Color.green;
+        timerText.text = timerText.text + "\nYOU WON!";
+    }
+
     void ReverseTimer()
     {
         reverseTimer = true;
