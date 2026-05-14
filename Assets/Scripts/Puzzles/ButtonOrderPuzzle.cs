@@ -6,7 +6,7 @@ public class ButtonOrderPuzzle : MonoBehaviour
     public string[] correctOrder = { "red", "blue", "green", "yellow"};
 
     private int currentIndex = 0;
-
+    [SerializeField] PuzzleTerminal terminal;
     public void PressButton(Button clickedButton)
     {
         string buttonText = clickedButton.GetComponentInChildren<TMP_Text>().text;
@@ -32,5 +32,6 @@ public class ButtonOrderPuzzle : MonoBehaviour
     void PuzzleSolved()
     {
         Debug.Log("Puzzle Solved!");
+        terminal.ClosePuzzle();
     }
 }

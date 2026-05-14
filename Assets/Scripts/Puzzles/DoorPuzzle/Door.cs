@@ -14,10 +14,11 @@ public class Door : MonoBehaviour
     [SerializeField] private float timeStillOpen = 3.0f; //door stays open for X seconds
     private float stillOpenTimer = 3.0f; //when == 0, door begins closing
     [SerializeField] private float timeToClose = 1.0f; //door closes in X seconds
+    private bool shouldLockAfterClosing = false;
     //
     private Rigidbody rb;
     //Tracking State of Door
-    private enum DOOR_STATE {CLOSED, OPENING, OPENING_JAMMED, STOPPED_JAMMED, OPEN, CLOSING};
+    private enum DOOR_STATE {CLOSED, OPENING, OPENING_JAMMED, STOPPED_JAMMED, OPEN, CLOSING, LOCKED};
     [SerializeField] private DOOR_STATE doorState = DOOR_STATE.CLOSED;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -95,6 +96,12 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player player = other.gameObject.GetComponent<Player>();
+            if (doorState == DOOR_STATE.LOCKED)
+            {
+                Debug.Log("LOCKED");
+                return;
+            }
+
             if (player.GetCanInteract() && 
                 (doorState == DOOR_STATE.CLOSED || doorState == DOOR_STATE.STOPPED_JAMMED))
             {
@@ -177,8 +184,39 @@ public class Door : MonoBehaviour
             rb.MovePosition(closeDestination);
             stillOpenTimer = timeStillOpen;
             SetupJammedOpenDistance();
-            doorState = DOOR_STATE.CLOSED;
+            if (shouldLockAfterClosing)
+            {
+                doorState = DOOR_STATE.LOCKED;
+                shouldLockAfterClosing = false;
+                Debug.Log(name + " IS NOW LOCKED");
+            }
+            else
+            {
+                doorState = DOOR_STATE.CLOSED;
+            }
+            //doorState = DOOR_STATE.CLOSED;
             Debug.Log(name + " IS CLOSED ");
+        }
+    }
+
+    public void Unlock()
+    {
+        doorState = DOOR_STATE.CLOSED;
+    }
+
+    public void Lock()
+    {
+        shouldLockAfterClosing = true;
+
+        // If already closed, lock immediately
+        if (doorState == DOOR_STATE.CLOSED)
+        {
+            doorState = DOOR_STATE.LOCKED;
+        }
+        else
+        {
+            // Otherwise begin closing
+            doorState = DOOR_STATE.CLOSING;
         }
     }
 }

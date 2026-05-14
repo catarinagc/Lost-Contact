@@ -1,10 +1,11 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class PuzzleTerminal : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject puzzleUI;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private Player player;
+    [SerializeField] private PuzzleRoom room;
     private bool isOpen = false;
 
     public void Interact()
@@ -36,5 +37,6 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         player.SetMovementEnabled();
+        room.UnlockDoors();
     }
 }
