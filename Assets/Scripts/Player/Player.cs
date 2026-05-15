@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System.Collections;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float sprintMovespeed = 7.0f;
     [SerializeField] private float mouseSensitivity = 100.0f;
     [SerializeField] List<GameObject> possibleStartPos;
+    [SerializeField] private GameObject doorInfoText;
+    private Coroutine currentDoorTextRoutine;
     private Vector3 moveDirection;
     private float horizontal;
     private float vertical;
@@ -64,6 +67,15 @@ public class Player : MonoBehaviour
         transform.rotation = chosenPos.transform.rotation;
     }
 
+    private IEnumerator ShowDoorText()
+    {
+        doorInfoText.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        doorInfoText.SetActive(false);
+    }
+
     private void MovementInput()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -107,6 +119,26 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 3f))
         {
+            Door door = hit.collider.GetComponentInParent<Door>();
+
+            if (door != null)
+            {
+                Debug.Log("here");
+                if (door.IsLocked())
+                {
+                    // Prevent coroutine spam
+                    if (currentDoorTextRoutine != null)
+                    {
+                        StopCoroutine(currentDoorTextRoutine);
+                    }
+
+                    currentDoorTextRoutine =
+                        StartCoroutine(ShowDoorText());
+
+                    return;
+                }
+        }
+
             IInteractable interactable =
                 hit.collider.GetComponent<IInteractable>();
 

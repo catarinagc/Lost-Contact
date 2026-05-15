@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections.Generic;
+using System.Collections;
 public class Door : MonoBehaviour
 {
     //Variables for Jammed Doors
@@ -70,6 +71,11 @@ public class Door : MonoBehaviour
         }
     }
 
+    public bool IsLocked()
+    {
+        return doorState == DOOR_STATE.LOCKED;
+    }
+
     public void SetupJammedOpenDistance()
     {
         jammedOpenDestination = transform.position + (transform.up / jammedCoefficient);
@@ -98,7 +104,6 @@ public class Door : MonoBehaviour
             Player player = other.gameObject.GetComponent<Player>();
             if (doorState == DOOR_STATE.LOCKED)
             {
-                Debug.Log("LOCKED");
                 return;
             }
 
