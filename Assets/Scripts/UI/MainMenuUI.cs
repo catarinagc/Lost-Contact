@@ -3,10 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [Header("Scene")]
     [SerializeField] private string levelSceneName = "Level";
-
-    [Header("Panels")]
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject controlsPanel;
@@ -22,9 +19,6 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        Time.timeScale = 1f;
-
-        // LoadSceneMode.Single evita que o Main Menu fique carregado por cima do Level.
         SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
     }
 

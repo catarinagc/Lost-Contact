@@ -3,14 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
 {
-    [Header("Scenes")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
-    [Header("UI")]
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject optionsPanel;
 
-    [Header("Disable these scripts while paused")]
     [SerializeField] private MonoBehaviour[] scriptsToDisableWhenPaused;
 
     private bool isPaused = false;
@@ -26,7 +23,6 @@ public class PauseMenuUI : MonoBehaviour
         {
             if (isPaused)
             {
-                // If options are open, Esc returns to pause menu first
                 if (optionsPanel != null && optionsPanel.activeSelf)
                     ShowPauseMenu();
                 else
@@ -89,10 +85,7 @@ public class PauseMenuUI : MonoBehaviour
 
         if (optionsPanel != null)
             optionsPanel.SetActive(false);
-
-        // Keep this as 1f because Time.timeScale = 0f caused UI input problems in your project.
-        Time.timeScale = 1f;
-
+        
         if (pause)
         {
             Cursor.lockState = CursorLockMode.None;
