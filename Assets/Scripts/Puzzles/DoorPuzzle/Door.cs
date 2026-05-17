@@ -86,52 +86,74 @@ public class Door : MonoBehaviour
         jammed = isJammed;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.SetCanInteract(false);
-            Debug.Log("PLAYER IS NOW IN RANGE OF " + name);
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         Player player = other.gameObject.GetComponent<Player>();
+    //         player.SetCanInteract(false);
+    //         Debug.Log("PLAYER IS NOW IN RANGE OF " + name);
 
+    //     }
+    // }
+
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         Player player = other.gameObject.GetComponent<Player>();
+    //         if (doorState == DOOR_STATE.LOCKED)
+    //         {
+    //             return;
+    //         }
+
+    //         if (player.GetCanInteract() && 
+    //             (doorState == DOOR_STATE.CLOSED || doorState == DOOR_STATE.STOPPED_JAMMED))
+    //         {
+    //             if (!jammed)
+    //             {
+    //                 doorState = DOOR_STATE.OPENING;
+    //             }
+    //             else 
+    //             {
+    //                 doorState = DOOR_STATE.OPENING_JAMMED;   
+    //             }
+    //             player.SetCanInteract(false);
+    //         }           
+    //     }
+    // }
+
+    public void InteractDoor()
+    {
+        //Player player = other.gameObject.GetComponent<Player>();
+        if (doorState == DOOR_STATE.LOCKED)
+        {
+            return;
         }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        if (doorState == DOOR_STATE.CLOSED || doorState == DOOR_STATE.STOPPED_JAMMED)
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            if (doorState == DOOR_STATE.LOCKED)
+            if (!jammed)
             {
-                return;
+                doorState = DOOR_STATE.OPENING;
             }
-
-            if (player.GetCanInteract() && 
-                (doorState == DOOR_STATE.CLOSED || doorState == DOOR_STATE.STOPPED_JAMMED))
+            else 
             {
-                if (!jammed)
-                {
-                    doorState = DOOR_STATE.OPENING;
-                }
-                else 
-                {
-                    doorState = DOOR_STATE.OPENING_JAMMED;   
-                }
-                player.SetCanInteract(false);
-            }           
-        }
+                doorState = DOOR_STATE.OPENING_JAMMED;   
+            }
+            //player.SetCanInteract(false);
+        }           
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.SetCanInteract(false);
-            Debug.Log("PLAYER IS NO LONGER ON RANGE OF " + name);
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         Player player = other.gameObject.GetComponent<Player>();
+    //         player.SetCanInteract(false);
+    //         Debug.Log("PLAYER IS NO LONGER ON RANGE OF " + name);
+    //     }
+    // }
 
     public void OpenDoor()
     {

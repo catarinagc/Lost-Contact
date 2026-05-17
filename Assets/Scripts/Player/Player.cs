@@ -175,9 +175,9 @@ public class Player : MonoBehaviour
 
     private void InteractionInput()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
         {
-            canInteract = true;
+            //canInteract = true;
             //pensar depois se vale a pena fazer tudo com triggers ou com rays
             //por enquanto manter objs separados para nao fazer overlap das interacoes
             TryInteract();
@@ -210,6 +210,10 @@ public class Player : MonoBehaviour
                         StartCoroutine(ShowDoorText());
 
                     return;
+                }
+                else
+                {
+                    door.InteractDoor();
                 }
             }
 

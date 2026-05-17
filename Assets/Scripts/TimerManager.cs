@@ -1,17 +1,25 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+
 public class TimerManager : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
     [SerializeField] int totalMinutes = 1;
     [SerializeField] int totalSeconds = 0;
+
     private float currentTime;
     private bool timerRunning = true;
     private bool reverseTimer = false;
+    private bool gameOverShown = false;
+
+    private Color originalColor;
 
     void Start()
     {
         currentTime = totalMinutes * 60 + totalSeconds;
+        originalColor = timerText.color;
+
         Debug.LogWarning("TIMER STARTED! GET OUT!");
     }
 
@@ -23,18 +31,16 @@ public class TimerManager : MonoBehaviour
             {
                 currentTime -= Time.unscaledDeltaTime;
 
-                if (currentTime < 0)
+                if (currentTime <= 0)
+                {
                     currentTime = 0;
+                    GameOver();
+                }
 
                 UpdateTimerDisplay(currentTime);
             }
-            else
-            {
-                timerRunning = false;
-                Debug.Log("Time's up!");
-                ReverseTimer();
-            }
         }
+
         if (reverseTimer)
         {
             currentTime += Time.unscaledDeltaTime;
@@ -42,19 +48,27 @@ public class TimerManager : MonoBehaviour
         }
     }
 
+    void GameOver()
+    {
+        if (gameOverShown) return;
+
+        gameOverShown = true;
+        timerRunning = false;
+        reverseTimer = true;
+
+        timerText.text = "GAME OVER\n00:00";
+        timerText.color = Color.red;
+
+        currentTime = 0;
+    }
+
     public void WinGame()
     {
         reverseTimer = false;
         timerRunning = false;
+
         timerText.color = Color.green;
         timerText.text = timerText.text + "\nYOU WON!";
-    }
-
-    void ReverseTimer()
-    {
-        reverseTimer = true;
-        currentTime = 0;
-        timerText.color = Color.red;
     }
 
     void UpdateTimerDisplay(float time)
@@ -62,15 +76,33 @@ public class TimerManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        // Only overwrite if not showing GAME OVER text
+        if (!gameOverShown)
+            timerText.text = timeString;
+        else
+            timerText.text = "GAME OVER\n" + timeString;
     }
 
     public void ErrorPenalty()
     {
         if (timerRunning)
-            currentTime -= 10;
+        {
+            currentTime -= 10f;
+            StartCoroutine(FlashRed());
+        }
         else
-            currentTime += 10;
-        
+        {
+            currentTime += 10f;
+            StartCoroutine(FlashRed());
+        }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        timerText.color = Color.red;
+        yield return new WaitForSecondsRealtime(0.2f);
+        timerText.color = gameOverShown ? Color.red : originalColor;
     }
 }

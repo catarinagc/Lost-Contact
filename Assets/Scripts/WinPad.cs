@@ -18,6 +18,7 @@ public class WinPad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Triggered by: " + other.name);
         if (other.CompareTag("Player"))
         {
             timerManager.WinGame();
