@@ -64,4 +64,13 @@ public class TimerManager : MonoBehaviour
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    public void ErrorPenalty()
+    {
+        if (timerRunning)
+            currentTime -= 10;
+        else
+            currentTime += 10;
+        
+    }
 }
