@@ -13,6 +13,12 @@ public class ButtonOrderPuzzle : MonoBehaviour
     [SerializeField] PuzzleTerminal terminal;
     [SerializeField] GameObject wrongText;
 
+    [Header("Puzzle SFX")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip wrongSound;
+    [SerializeField] private AudioClip solvedSound;
+    [SerializeField] private float sfxVolume = 0.8f;
+
     private Coroutine currentTextRoutine;
 
     public void PressButton(Button clickedButton)
@@ -21,7 +27,7 @@ public class ButtonOrderPuzzle : MonoBehaviour
         if (!clickedButton.interactable)
             return;
 
-        string buttonText = clickedButton.GetComponentInChildren<TMP_Text>().text;
+        string buttonText = clickedButton.GetComponentInChildren<TMP_Text>().text.ToLower();
 
         // Keep button visually pressed / disabled
         clickedButton.interactable = false;
@@ -58,6 +64,7 @@ public class ButtonOrderPuzzle : MonoBehaviour
     private IEnumerator ResetPuzzle()
     {
         wrongText.SetActive(true);
+        PlaySFX(wrongSound);
 
         yield return new WaitForSeconds(2f);
 
@@ -79,6 +86,15 @@ public class ButtonOrderPuzzle : MonoBehaviour
     void PuzzleSolved()
     {
         Debug.Log("Puzzle Solved!");
+        PlaySFX(solvedSound);
         terminal.ClosePuzzle();
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+            return;
+
+        audioSource.PlayOneShot(clip, sfxVolume);
     }
 }

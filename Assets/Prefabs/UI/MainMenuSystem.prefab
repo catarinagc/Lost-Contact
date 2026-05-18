@@ -2451,6 +2451,7 @@ GameObject:
   - component: {fileID: 5184992283685930844}
   - component: {fileID: 8332622859759641441}
   - component: {fileID: 2488393621462694138}
+  - component: {fileID: 5754011316185324035}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2592,6 +2593,21 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &5754011316185324035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799387301786475897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e0933b6e34ca14492ac5fd3d0db30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSFX
+  audioSource: {fileID: 0}
+  hoverSound: {fileID: 0}
+  clickSound: {fileID: 0}
 --- !u!1 &5454323055523542984
 GameObject:
   m_ObjectHideFlags: 0
