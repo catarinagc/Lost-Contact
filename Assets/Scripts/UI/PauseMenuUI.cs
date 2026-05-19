@@ -12,9 +12,21 @@ public class PauseMenuUI : MonoBehaviour
 
     private bool isPaused = false;
 
+    private bool[] previousScriptStates;
+    private CursorLockMode previousCursorLockState;
+    private bool previousCursorVisible;
+
     private void Start()
     {
-        SetPaused(false);
+        previousScriptStates = new bool[scriptsToDisableWhenPaused.Length];
+
+        isPaused = false;
+
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
     }
 
     private void Update()
@@ -37,18 +49,60 @@ public class PauseMenuUI : MonoBehaviour
 
     public void PauseGame()
     {
-        SetPaused(true);
-        ShowPauseMenu();
+        if (isPaused) return;
+
+        SaveStateBeforePause();
+
+        isPaused = true;
+
+        if (pausePanel != null)
+            pausePanel.SetActive(true);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        foreach (MonoBehaviour script in scriptsToDisableWhenPaused)
+        {
+            if (script == null) continue;
+            if (script == this) continue;
+
+            script.enabled = false;
+        }
     }
 
     public void ResumeGame()
     {
-        SetPaused(false);
+        if (!isPaused) return;
+
+        isPaused = false;
+
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        Cursor.lockState = previousCursorLockState;
+        Cursor.visible = previousCursorVisible;
+
+        for (int i = 0; i < scriptsToDisableWhenPaused.Length; i++)
+        {
+            MonoBehaviour script = scriptsToDisableWhenPaused[i];
+
+            if (script == null) continue;
+            if (script == this) continue;
+
+            script.enabled = previousScriptStates[i];
+        }
     }
 
     public void ShowOptions()
     {
-        pausePanel.SetActive(false);
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
 
         if (optionsPanel != null)
             optionsPanel.SetActive(true);
@@ -56,7 +110,8 @@ public class PauseMenuUI : MonoBehaviour
 
     public void ShowPauseMenu()
     {
-        pausePanel.SetActive(true);
+        if (pausePanel != null)
+            pausePanel.SetActive(true);
 
         if (optionsPanel != null)
             optionsPanel.SetActive(false);
@@ -77,32 +132,19 @@ public class PauseMenuUI : MonoBehaviour
         Application.Quit();
     }
 
-    private void SetPaused(bool pause)
+    private void SaveStateBeforePause()
     {
-        isPaused = pause;
+        previousCursorLockState = Cursor.lockState;
+        previousCursorVisible = Cursor.visible;
 
-        pausePanel.SetActive(pause);
+        for (int i = 0; i < scriptsToDisableWhenPaused.Length; i++)
+        {
+            MonoBehaviour script = scriptsToDisableWhenPaused[i];
 
-        if (optionsPanel != null)
-            optionsPanel.SetActive(false);
-        
-        if (pause)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
-        foreach (MonoBehaviour script in scriptsToDisableWhenPaused)
-        {
             if (script == null) continue;
             if (script == this) continue;
 
-            script.enabled = !pause;
+            previousScriptStates[i] = script.enabled;
         }
     }
 }
