@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WinPad : MonoBehaviour
+public class ExitDoor : MonoBehaviour
 {
-    [SerializeField] private TimerManager timerManager;
+    [SerializeField] private GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +21,7 @@ public class WinPad : MonoBehaviour
         Debug.Log("Triggered by: " + other.name);
         if (other.CompareTag("Player"))
         {
-            timerManager.WinGame();
+            gameManager.WinGame();
         }
     }
 }

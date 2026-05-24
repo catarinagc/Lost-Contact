@@ -5,7 +5,7 @@ public class SlowMoveRoom : MonoBehaviour
 {
     private Player player;
 
-    [SerializeField] TimerManager timerManager;
+    [SerializeField] GameManager timerManager;
     [SerializeField] GameObject speedInfoUI;
 
     [SerializeField] private float penaltyCooldown = 2f;

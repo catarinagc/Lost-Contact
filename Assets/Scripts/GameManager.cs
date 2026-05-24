@@ -2,11 +2,11 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-public class TimerManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
-    [SerializeField] int totalMinutes = 1;
-    [SerializeField] int totalSeconds = 0;
+    [SerializeField] int totalMinutes = 10;
+    [SerializeField] int totalSeconds = 30;
 
     private float currentTime;
     private bool timerRunning = true;

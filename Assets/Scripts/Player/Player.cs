@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
 
             if (door != null)
             {
-                Debug.Log("here");
+                Debug.Log("Door Detected");
                 if (door.IsLocked())
                 {
                     // Prevent coroutine spam

@@ -75,7 +75,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8242b600a2abcd946a5e2e8518ce1acb, type: 2}
+  - {fileID: 2100000, guid: c91325da0b860d2489e2318b0c3a4da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,6 +119,11 @@ MonoBehaviour:
   timeToOpen: 3
   timeStillOpen: 2
   timeToClose: 1
+  audioSource: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
+  jammedSound: {fileID: 0}
+  audioVolume: 0.8
   doorState: 0
 --- !u!54 &2365981471937212536
 Rigidbody:
