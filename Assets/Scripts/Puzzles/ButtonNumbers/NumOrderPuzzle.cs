@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.InputSystem;
 public class NumOrderPuzzle : MonoBehaviour
 {
     public int[] correctOrder = { 1, 9, 8, 7, 2 };
@@ -22,6 +23,32 @@ public class NumOrderPuzzle : MonoBehaviour
         currentOrder.Add(digit);
 
         UpdateDisplay();
+    }
+
+    void Update()
+    {
+        for (int i = 0; i <= 9; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+            {
+                currentOrder.Add(i);
+                UpdateDisplay();
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad0 + i))
+            {
+                currentOrder.Add(i);
+                UpdateDisplay();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            currentOrder.RemoveAt(currentOrder.Count - 1);
+            UpdateDisplay();
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SubmitCode();
+        }
     }
 
     public void CleanCode()

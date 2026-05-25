@@ -2567,6 +2567,7 @@ Transform:
   - {fileID: 1730492767}
   - {fileID: 1542651492}
   - {fileID: 500846701}
+  - {fileID: 386945213}
   m_Father: {fileID: 893116223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &186896067
@@ -4115,6 +4116,37 @@ Transform:
   - {fileID: 562350535}
   - {fileID: 181122610}
   m_Father: {fileID: 893116223}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &386945212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386945213}
+  m_Layer: 0
+  m_Name: PossibleStart_18
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386945213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386945212}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.23, y: -2, z: 82.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 184061159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &387573371
 PrefabInstance:
@@ -7889,7 +7921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691442118}
   m_Layer: 0
-  m_Name: PossibleStart
+  m_Name: PossibleStart_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15106,7 +15138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
       propertyPath: possibleStartPos.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
       propertyPath: 'possibleStartPos.Array.data[0]'
@@ -15116,6 +15148,10 @@ PrefabInstance:
       propertyPath: 'possibleStartPos.Array.data[1]'
       value: 
       objectReference: {fileID: 2035274266}
+    - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
+      propertyPath: 'possibleStartPos.Array.data[2]'
+      value: 
+      objectReference: {fileID: 386945212}
     - target: {fileID: 5180324815093098182, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
       propertyPath: m_ProvidesContacts
       value: 0
@@ -25148,7 +25184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035274267}
   m_Layer: 0
-  m_Name: PossibleStart
+  m_Name: PossibleStart_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
