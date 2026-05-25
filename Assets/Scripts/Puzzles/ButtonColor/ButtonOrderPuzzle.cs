@@ -87,7 +87,7 @@ public class ButtonOrderPuzzle : MonoBehaviour
     {
         Debug.Log("Puzzle Solved!");
         PlaySFX(solvedSound);
-        terminal.ClosePuzzle();
+        terminal.FinishedPuzzle();
     }
 
     private void PlaySFX(AudioClip clip)

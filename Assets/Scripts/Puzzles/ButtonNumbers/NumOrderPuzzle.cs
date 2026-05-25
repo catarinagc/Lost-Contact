@@ -72,7 +72,7 @@ public class NumOrderPuzzle : MonoBehaviour
     void PuzzleSolved()
     {
         Debug.Log("Puzzle Solved!");
-        terminal.ClosePuzzle();
+        terminal.FinishedPuzzle();
     }
 
     void UpdateDisplay()

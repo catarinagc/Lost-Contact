@@ -7,13 +7,15 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
     [SerializeField] private Player player;
     [SerializeField] private PuzzleRoom room;
     private bool isOpen = false;
+    private bool isSolved = false;
 
-    public void Interact()
+    public bool Interact()
     {
-        if (isOpen)
-            return;
+        if (isOpen || isSolved)
+            return false;
 
         OpenPuzzle();
+        return true;
     }
 
     private void OpenPuzzle()
@@ -37,6 +39,12 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         player.SetMovementEnabled();
+    }
+
+    public void FinishedPuzzle()
+    {
+        ClosePuzzle();
+        isSolved = true;
         room.UnlockDoors();
     }
 }

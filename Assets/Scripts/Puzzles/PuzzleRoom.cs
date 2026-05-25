@@ -6,6 +6,7 @@ public class PuzzleRoom : MonoBehaviour
     private bool isFirstTime = true;
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Entrou " + isFirstTime + " "+ other);
         if (other.CompareTag("Player") && isFirstTime)
         {
             isFirstTime = false;

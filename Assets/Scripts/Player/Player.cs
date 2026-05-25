@@ -222,8 +222,8 @@ public class Player : MonoBehaviour
 
             if (interactable != null)
             {
-                canMove = false;
-                interactable.Interact();
+                if (interactable.Interact())
+                    canMove = false;
             }
         }
     }
