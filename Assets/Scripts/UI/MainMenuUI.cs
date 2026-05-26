@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private string levelSceneName = "Level";
+    [SerializeField] private string introSceneName = "IntroCutscene";
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject controlsPanel;
@@ -19,7 +19,8 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
+        Debug.Log("Loading intro scene: " + introSceneName);
+        SceneManager.LoadScene(introSceneName, LoadSceneMode.Single);
     }
 
     public void ShowMainMenu()
