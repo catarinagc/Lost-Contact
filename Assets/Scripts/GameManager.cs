@@ -1,17 +1,25 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Timer")]
     [SerializeField] TMP_Text timerText;
     [SerializeField] int totalMinutes = 10;
     [SerializeField] int totalSeconds = 30;
+
+    [Header("Ending")]
+    [SerializeField] private string endingCutsceneSceneName = "EndingCutscene";
+    [SerializeField] private float delayBeforeEndingCutscene = 2f;
 
     private float currentTime;
     private bool timerRunning = true;
     private bool reverseTimer = false;
     private bool gameOverShown = false;
+    private bool hasWon = false;
 
     private Color originalColor;
 
@@ -64,11 +72,24 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        if (hasWon || gameOverShown) return;
+
+        hasWon = true;
+
         reverseTimer = false;
         timerRunning = false;
 
         timerText.color = Color.green;
         timerText.text = timerText.text + "\nYOU WON!";
+
+        StartCoroutine(LoadEndingCutsceneAfterDelay());
+    }
+
+    private IEnumerator LoadEndingCutsceneAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(delayBeforeEndingCutscene);
+
+        SceneManager.LoadScene(endingCutsceneSceneName, LoadSceneMode.Single);
     }
 
     void UpdateTimerDisplay(float time)
@@ -87,6 +108,8 @@ public class GameManager : MonoBehaviour
 
     public void ErrorPenalty()
     {
+        if (hasWon) return;
+
         if (timerRunning)
         {
             currentTime -= 10f;
