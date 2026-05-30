@@ -2767,6 +2767,7 @@ MonoBehaviour:
   - {fileID: 1983119535}
   - {fileID: 271204941}
   - {fileID: 1990912686}
+  terminal: {fileID: 0}
 --- !u!65 &222732686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4336,7 +4337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -29.975052}
+  m_AnchoredPosition: {x: -80, y: -29.975098}
   m_SizeDelta: {x: 160, y: 59.950104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &388806355
@@ -8793,6 +8794,13 @@ MonoBehaviour:
   totalSeconds: 30
   endingCutsceneSceneName: EndingCutscene
   delayBeforeEndingCutscene: 2
+  puzzleObjects:
+  - {fileID: 788022790}
+  - {fileID: 1063921976}
+  puzzleTerminals:
+  - {fileID: 765948756}
+  - {fileID: 1176681777}
+  - {fileID: 1244365838}
 --- !u!1001 &734039596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9458,7 +9466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUI: {fileID: 1947495669}
+  puzzleUIBehaviour: {fileID: 0}
   crosshair: {fileID: 74702350}
   player: {fileID: 1211717316}
   room: {fileID: 820017573}
@@ -9847,7 +9855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &788022789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9896,6 +9904,7 @@ MonoBehaviour:
   wrongSound: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
   solvedSound: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
   sfxVolume: 0.8
+  roomColor: 0
 --- !u!114 &788022791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10460,6 +10469,7 @@ MonoBehaviour:
   - {fileID: 1624509695}
   - {fileID: 500846708}
   - {fileID: 1403857981}
+  terminal: {fileID: 0}
 --- !u!65 &820017574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13374,7 +13384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1063921975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14934,7 +14944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUI: {fileID: 788022788}
+  puzzleUIBehaviour: {fileID: 0}
   crosshair: {fileID: 74702350}
   player: {fileID: 1211717316}
   room: {fileID: 222732685}
@@ -15981,7 +15991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUI: {fileID: 1063921974}
+  puzzleUIBehaviour: {fileID: 0}
   crosshair: {fileID: 74702350}
   player: {fileID: 1211717316}
   room: {fileID: 2027758850}
@@ -25668,6 +25678,7 @@ MonoBehaviour:
   doorsToLock:
   - {fileID: 902952637}
   - {fileID: 1399797378}
+  terminal: {fileID: 0}
 --- !u!65 &2027758851
 BoxCollider:
   m_ObjectHideFlags: 0

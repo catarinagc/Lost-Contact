@@ -2,10 +2,16 @@ using UnityEngine;
 using System.Collections.Generic;
 public class PuzzleTerminal : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject puzzleUI;
+    [SerializeField] private MonoBehaviour puzzleUIBehaviour;
+    public IPuzzle puzzleUI
+    {
+        get => puzzleUIBehaviour as IPuzzle;
+        set => puzzleUIBehaviour = value as MonoBehaviour;
+    }
     [SerializeField] private GameObject crosshair;
     [SerializeField] private Player player;
     [SerializeField] private PuzzleRoom room;
+    public RoomColors roomColor;
 
     private bool isOpen = false;
     private bool isSolved = false;
@@ -24,7 +30,7 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
     {
         isOpen = true;
 
-        puzzleUI.SetActive(true);
+        puzzleUI.gameObject.SetActive(true);
         crosshair.SetActive(false);
 
         Cursor.lockState = CursorLockMode.None;
@@ -35,7 +41,7 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
     {
         isOpen = false;
 
-        puzzleUI.SetActive(false);
+        puzzleUI.gameObject.SetActive(false);
         crosshair.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -49,4 +55,14 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
         isSolved = true;
         room.UnlockDoors();
     }
+
+    public void PreparePuzzle()
+    {
+        puzzleUI.Restart(roomColor);
+    }
+
+    // private void Start()
+    // {
+    //     puzzleUI.gameObject.SetActive(false);
+    // }
 }

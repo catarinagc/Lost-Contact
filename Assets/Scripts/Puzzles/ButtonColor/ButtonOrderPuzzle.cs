@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-public class ButtonOrderPuzzle : MonoBehaviour
+public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 {
     public string[] correctOrder;
     private int currentIndex = 0;
@@ -17,7 +17,6 @@ public class ButtonOrderPuzzle : MonoBehaviour
     [SerializeField] private AudioClip wrongSound;
     [SerializeField] private AudioClip solvedSound;
     [SerializeField] private float sfxVolume = 0.8f;
-    public enum RoomColors { Blue, Green }
     public RoomColors roomColor;
     private Coroutine currentTextRoutine;
 
@@ -116,5 +115,11 @@ public class ButtonOrderPuzzle : MonoBehaviour
             return;
 
         audioSource.PlayOneShot(clip, sfxVolume);
+    }
+
+    public void Restart(RoomColors roomColor)
+    {
+        this.roomColor = roomColor;
+        PreparePuzzle();
     }
 }

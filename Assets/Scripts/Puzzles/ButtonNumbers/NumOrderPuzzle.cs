@@ -4,7 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
-public class NumOrderPuzzle : MonoBehaviour
+public class NumOrderPuzzle : MonoBehaviour, IPuzzle
 {
     //public int[] correctOrder = { 1, 9, 8, 7, 2 };
     public int[] correctOrder;
@@ -16,7 +16,6 @@ public class NumOrderPuzzle : MonoBehaviour
     [SerializeField] PuzzleTerminal terminal;
     private string[] greenCodes = { "ᛞ" , "ᛈ" , "ᚢ", "ᛤ", "ᛉ", "ᛗ", "ᚠ", "ᚡ", "ᛟ", "ᛦ"};
     private string[] blueCodes = { "ᚡ" , "ᛟ" , "ᛉ", "ᛞ", "ᛦ", "ᛗ", "ᛈ", "ᛤ", "ᚢ", "ᚠ"};
-    public enum RoomColors { Blue, Green }
     public RoomColors roomColor;
     public void PressButton(Button clickedButton)
     {
@@ -118,10 +117,10 @@ public class NumOrderPuzzle : MonoBehaviour
 
     void Awake()
     {
-        PrepareLevel();
+        PreparePuzzle();
     }
 
-    private void PrepareLevel()
+    private void PreparePuzzle()
     {
         correctOrder = PrepareCode();
         switch (roomColor)
@@ -154,5 +153,11 @@ public class NumOrderPuzzle : MonoBehaviour
         {
             symbolsDisplayText.text += textCode[value];
         }
+    }
+
+    public void Restart(RoomColors roomColor)
+    {
+        this.roomColor = roomColor;
+        PreparePuzzle();
     }
 }

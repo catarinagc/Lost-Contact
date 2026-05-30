@@ -2,7 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+using System.Collections.Generic;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string endingCutsceneSceneName = "EndingCutscene";
     [SerializeField] private float delayBeforeEndingCutscene = 2f;
 
+    [Header("Puzzles")]
+    [SerializeField] private List<MonoBehaviour> puzzleObjects;
+    private List<IPuzzle> puzzles;
+    [SerializeField] List<PuzzleTerminal> puzzleTerminals;
+
     private float currentTime;
     private bool timerRunning = true;
     private bool reverseTimer = false;
@@ -25,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        PreparePuzzles();
         currentTime = totalMinutes * 60 + totalSeconds;
         originalColor = timerText.color;
 
@@ -128,4 +135,33 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         timerText.color = gameOverShown ? Color.red : originalColor;
     }
+
+    // private void PreparePuzzles()
+    // {
+    //     foreach (PuzzleTerminal terminal in puzzleTerminals)
+    //     {
+    //         int randPuzzle = Random.Range(0, puzzles.Count);
+    //         terminal.puzzleUI = puzzles[randPuzzle];
+    //     }
+    // }
+
+    // GameManager.cs
+    private void PreparePuzzles()
+    {
+        foreach (var mb in puzzleObjects)
+        {
+            Debug.Log($"Type: {mb.GetType().FullName}, Interfaces: {string.Join(", ", mb.GetType().GetInterfaces().Select(i => i.FullName))}");
+        }
+
+        puzzles = puzzleObjects.Cast<IPuzzle>().ToList();
+        List<IPuzzle> shuffled = puzzles.OrderBy(_ => Random.value).ToList();
+
+        for (int i = 0; i < puzzleTerminals.Count; i++)
+        {
+            IPuzzle assigned = shuffled[i % shuffled.Count];
+            puzzleTerminals[i].puzzleUI = assigned;
+            assigned.gameObject.SetActive(false);
+        }
+    }
+
 }
