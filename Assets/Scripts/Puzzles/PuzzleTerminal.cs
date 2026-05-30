@@ -6,8 +6,10 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
     [SerializeField] private GameObject crosshair;
     [SerializeField] private Player player;
     [SerializeField] private PuzzleRoom room;
+
     private bool isOpen = false;
     private bool isSolved = false;
+
 
     public bool Interact()
     {

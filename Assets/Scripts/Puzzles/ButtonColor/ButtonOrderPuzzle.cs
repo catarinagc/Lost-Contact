@@ -5,8 +5,7 @@ using System.Collections;
 
 public class ButtonOrderPuzzle : MonoBehaviour
 {
-    public string[] correctOrder = { "red", "blue", "green", "yellow" };
-
+    public string[] correctOrder;
     private int currentIndex = 0;
     private int pressedIndex = 0;
 
@@ -18,8 +17,29 @@ public class ButtonOrderPuzzle : MonoBehaviour
     [SerializeField] private AudioClip wrongSound;
     [SerializeField] private AudioClip solvedSound;
     [SerializeField] private float sfxVolume = 0.8f;
-
+    public enum RoomColors { Blue, Green }
+    public RoomColors roomColor;
     private Coroutine currentTextRoutine;
+
+    void Awake()
+    {
+        PreparePuzzle();
+    }
+
+    private void PreparePuzzle()
+    {
+        switch (roomColor)
+        {
+            case RoomColors.Blue:
+                correctOrder = new[] { "blue", "yellow", "red", "green" };
+                break;
+            case RoomColors.Green:
+                correctOrder = new[] { "red", "blue", "green", "yellow" };
+                break;
+            default:
+                break;
+        }
+    }
 
     public void PressButton(Button clickedButton)
     {

@@ -13424,9 +13424,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NumOrderPuzzle
   correctOrder: 0400000003000000060000000700000002000000
+  codeLength: 5
+  symbolsDisplayText: {fileID: 28153278}
   codeDisplayText: {fileID: 1694012902}
   wrongCodeText: {fileID: 877694368}
   terminal: {fileID: 1244365838}
+  roomColor: 0
 --- !u!114 &1063921977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23540,9 +23543,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NumOrderPuzzle
   correctOrder: 0300000007000000050000000000000008000000
+  codeLength: 5
+  symbolsDisplayText: {fileID: 153265571}
   codeDisplayText: {fileID: 1279699769}
   wrongCodeText: {fileID: 1911555311}
   terminal: {fileID: 765948756}
+  roomColor: 0
 --- !u!114 &1947495671
 MonoBehaviour:
   m_ObjectHideFlags: 0

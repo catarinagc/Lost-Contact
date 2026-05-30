@@ -6,14 +6,18 @@ using System.Collections;
 using UnityEngine.InputSystem;
 public class NumOrderPuzzle : MonoBehaviour
 {
-    public int[] correctOrder = { 1, 9, 8, 7, 2 };
-
+    //public int[] correctOrder = { 1, 9, 8, 7, 2 };
+    public int[] correctOrder;
+    [SerializeField] int codeLength = 5;
     private List<int> currentOrder = new List<int>();
-
+    [SerializeField] TMP_Text symbolsDisplayText;
     [SerializeField] TMP_Text codeDisplayText;
     [SerializeField] GameObject wrongCodeText;
     [SerializeField] PuzzleTerminal terminal;
-
+    private string[] greenCodes = { "ᛞ" , "ᛈ" , "ᚢ", "ᛤ", "ᛉ", "ᛗ", "ᚠ", "ᚡ", "ᛟ", "ᛦ"};
+    private string[] blueCodes = { "ᚡ" , "ᛟ" , "ᛉ", "ᛞ", "ᛦ", "ᛗ", "ᛈ", "ᛤ", "ᚢ", "ᚠ"};
+    public enum RoomColors { Blue, Green }
+    public RoomColors roomColor;
     public void PressButton(Button clickedButton)
     {
         string buttonText = clickedButton.GetComponentInChildren<TMP_Text>().text;
@@ -40,7 +44,7 @@ public class NumOrderPuzzle : MonoBehaviour
                 UpdateDisplay();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Backspace) && currentOrder.Count > 0)
         {
             currentOrder.RemoveAt(currentOrder.Count - 1);
             UpdateDisplay();
@@ -109,6 +113,46 @@ public class NumOrderPuzzle : MonoBehaviour
         foreach (int digit in currentOrder)
         {
             codeDisplayText.text += digit.ToString();
+        }
+    }
+
+    void Awake()
+    {
+        PrepareLevel();
+    }
+
+    private void PrepareLevel()
+    {
+        correctOrder = PrepareCode();
+        switch (roomColor)
+        {
+            case RoomColors.Blue:
+                PrepareText(blueCodes);
+                break;
+            case RoomColors.Green:
+                PrepareText(greenCodes);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private int[] PrepareCode()
+    {
+        int[] code = new int[codeLength];
+        for (int i = 0; i < codeLength; i++)
+        {
+            code[i] = Random.Range(0, 10);
+        }
+        return code;
+    }
+
+    private void PrepareText(string[] textCode)
+    {
+        symbolsDisplayText.text = "";
+        foreach (int value in correctOrder)
+        {
+            symbolsDisplayText.text += textCode[value];
         }
     }
 }
