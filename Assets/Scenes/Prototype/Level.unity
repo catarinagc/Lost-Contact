@@ -2767,7 +2767,7 @@ MonoBehaviour:
   - {fileID: 1983119535}
   - {fileID: 271204941}
   - {fileID: 1990912686}
-  terminal: {fileID: 0}
+  terminal: {fileID: 1176681777}
 --- !u!65 &222732686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4384,8 +4384,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1176681777}
-        m_TargetAssemblyTypeName: PuzzleTerminal, Assembly-CSharp
+      - m_Target: {fileID: 788022790}
+        m_TargetAssemblyTypeName: ButtonOrderPuzzle, Assembly-CSharp
         m_MethodName: ClosePuzzle
         m_Mode: 1
         m_Arguments:
@@ -9470,6 +9470,7 @@ MonoBehaviour:
   crosshair: {fileID: 74702350}
   player: {fileID: 1211717316}
   room: {fileID: 820017573}
+  roomColor: 0
 --- !u!65 &765948757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10469,7 +10470,7 @@ MonoBehaviour:
   - {fileID: 1624509695}
   - {fileID: 500846708}
   - {fileID: 1403857981}
-  terminal: {fileID: 0}
+  terminal: {fileID: 765948756}
 --- !u!65 &820017574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14350,8 +14351,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1244365838}
-        m_TargetAssemblyTypeName: PuzzleTerminal, Assembly-CSharp
+      - m_Target: {fileID: 1063921976}
+        m_TargetAssemblyTypeName: NumOrderPuzzle, Assembly-CSharp
         m_MethodName: ClosePuzzle
         m_Mode: 1
         m_Arguments:
@@ -14948,6 +14949,7 @@ MonoBehaviour:
   crosshair: {fileID: 74702350}
   player: {fileID: 1211717316}
   room: {fileID: 222732685}
+  roomColor: 0
 --- !u!65 &1176681778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15995,6 +15997,7 @@ MonoBehaviour:
   crosshair: {fileID: 74702350}
   player: {fileID: 1211717316}
   room: {fileID: 2027758850}
+  roomColor: 0
 --- !u!65 &1244365839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25678,7 +25681,7 @@ MonoBehaviour:
   doorsToLock:
   - {fileID: 902952637}
   - {fileID: 1399797378}
-  terminal: {fileID: 0}
+  terminal: {fileID: 1244365838}
 --- !u!65 &2027758851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27212,9 +27215,9 @@ BoxCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 726492030}
   - {fileID: 1211717315}
   - {fileID: 893116223}
-  - {fileID: 726492030}
   - {fileID: 1744654916}
   - {fileID: 237623008}
   - {fileID: 1504103021}

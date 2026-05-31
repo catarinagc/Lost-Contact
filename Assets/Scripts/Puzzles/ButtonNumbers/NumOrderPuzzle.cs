@@ -160,4 +160,9 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
         this.roomColor = roomColor;
         PreparePuzzle();
     }
+
+    public void ClosePuzzle()
+    {
+        terminal.ClosePuzzle();
+    }
 }
