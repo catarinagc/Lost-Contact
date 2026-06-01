@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         currentTime = totalMinutes * 60 + totalSeconds;
         originalColor = timerText.color;
 
-        Debug.LogWarning("TIMER STARTED! GET OUT!");
+        //Debug.LogWarning("TIMER STARTED! GET OUT!");
     }
 
     void Update()
@@ -148,10 +148,10 @@ public class GameManager : MonoBehaviour
     // GameManager.cs
     private void PreparePuzzles()
     {
-        foreach (var mb in puzzleObjects)
-        {
-            Debug.Log($"Type: {mb.GetType().FullName}, Interfaces: {string.Join(", ", mb.GetType().GetInterfaces().Select(i => i.FullName))}");
-        }
+        // foreach (var mb in puzzleObjects)
+        // {
+        //     Debug.Log($"Type: {mb.GetType().FullName}, Interfaces: {string.Join(", ", mb.GetType().GetInterfaces().Select(i => i.FullName))}");
+        // }
 
         puzzles = puzzleObjects.Cast<IPuzzle>().ToList();
         List<IPuzzle> shuffled = puzzles.OrderBy(_ => Random.value).ToList();

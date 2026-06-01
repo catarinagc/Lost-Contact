@@ -5,11 +5,13 @@ public class ButtonDebugTest : MonoBehaviour, IPointerEnterHandler, IPointerClic
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Pointer entered: " + gameObject.name);
+        //Debug.Log("Pointer entered: " + gameObject.name);
+        return;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Pointer clicked: " + gameObject.name);
+        //Debug.Log("Pointer clicked: " + gameObject.name);
+        return;
     }
 }

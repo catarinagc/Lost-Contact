@@ -251,6 +251,7 @@ public class Door : MonoBehaviour
 
     public void Unlock()
     {
+        shouldLockAfterClosing = false; // ← add this
         doorState = DOOR_STATE.CLOSED;
     }
 

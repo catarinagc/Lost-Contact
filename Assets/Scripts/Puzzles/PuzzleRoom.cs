@@ -10,6 +10,7 @@ public class PuzzleRoom : MonoBehaviour
         Debug.Log("Entrou " + isFirstTime + " "+ other);
         if (other.CompareTag("Player") && isFirstTime)
         {
+            Debug.Log("LOCK");
             terminal.PreparePuzzle();
             isFirstTime = false;
             foreach( Door door in doorsToLock)

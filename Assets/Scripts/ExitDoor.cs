@@ -25,7 +25,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
 
         hasInteracted = true;
 
-        Debug.Log("Exit door interacted with.");
+        //Debug.Log("Exit door interacted with.");
 
         if (gameManager != null)
         {
@@ -33,7 +33,7 @@ public class ExitDoor : MonoBehaviour, IInteractable
             return true;
         }
 
-        Debug.LogError("GameManager is not assigned on ExitDoor.");
+        //Debug.LogError("GameManager is not assigned on ExitDoor.");
         return false;
     }
 }

@@ -16,12 +16,12 @@ public class UIRaycastDebugger : MonoBehaviour
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerData, results);
 
-            Debug.Log("UI objects under mouse: " + results.Count);
+            //Debug.Log("UI objects under mouse: " + results.Count);
 
-            foreach (RaycastResult result in results)
-            {
-                Debug.Log("Hit UI object: " + result.gameObject.name);
-            }
+            // foreach (RaycastResult result in results)
+            // {
+            //     Debug.Log("Hit UI object: " + result.gameObject.name);
+            // }
         }
     }
 }

@@ -9,7 +9,7 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
     private int currentIndex = 0;
     private int pressedIndex = 0;
 
-    [SerializeField] PuzzleTerminal terminal;
+    [SerializeField] public PuzzleTerminal terminal;
     [SerializeField] GameObject wrongText;
 
     [Header("Puzzle SFX")]
@@ -27,6 +27,12 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 
     private void PreparePuzzle()
     {
+        currentIndex = 0;
+        pressedIndex = 0;
+        foreach(Button button in gameObject.GetComponentsInChildren<Button>())
+        {
+            button.interactable = true;
+        }
         switch (roomColor)
         {
             case RoomColors.Blue:
@@ -89,11 +95,9 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 
         wrongText.SetActive(false);
 
-        // Reset puzzle state
         currentIndex = 0;
         pressedIndex = 0;
 
-        // Re-enable all buttons
         Button[] buttons = GetComponentsInChildren<Button>();
 
         foreach (Button button in buttons)
@@ -104,7 +108,6 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 
     void PuzzleSolved()
     {
-        Debug.Log("Puzzle Solved!");
         PlaySFX(solvedSound);
         terminal.FinishedPuzzle();
     }
@@ -126,5 +129,10 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
     public void ClosePuzzle()
     {
         terminal.ClosePuzzle();
+    }
+
+    public void SetTerminal(PuzzleTerminal terminal)
+    {
+        this.terminal = terminal;
     }
 }

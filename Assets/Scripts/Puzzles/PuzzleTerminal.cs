@@ -58,11 +58,7 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
 
     public void PreparePuzzle()
     {
+        puzzleUI.SetTerminal(this);
         puzzleUI.Restart(roomColor);
     }
-
-    // private void Start()
-    // {
-    //     puzzleUI.gameObject.SetActive(false);
-    // }
 }

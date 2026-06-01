@@ -83,8 +83,6 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
 
     void WrongCode()
     {
-        Debug.Log("Wrong code!");
-
         StartCoroutine(ShowWrongCode());
         
         CleanCode();
@@ -101,7 +99,6 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
 
     void PuzzleSolved()
     {
-        Debug.Log("Puzzle Solved!");
         terminal.FinishedPuzzle();
     }
 
@@ -122,6 +119,7 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
 
     private void PreparePuzzle()
     {
+        codeDisplayText.text = "";
         correctOrder = PrepareCode();
         switch (roomColor)
         {
@@ -164,5 +162,10 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
     public void ClosePuzzle()
     {
         terminal.ClosePuzzle();
+    }
+
+    public void SetTerminal(PuzzleTerminal terminal)
+    {
+        this.terminal = terminal;
     }
 }
