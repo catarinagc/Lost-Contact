@@ -3655,7 +3655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &332227034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13766,7 +13766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
       propertyPath: gravity
-      value: -9.58
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 4566680315237646193, guid: 2df174cd1288c4949af79663e195ee48, type: 3}
       propertyPath: moveSpeed
@@ -21960,11 +21960,11 @@ MonoBehaviour:
   normalHorizontalShake: 0.01
   normalVerticalShake: 0.01
   normalSpeed: 8
-  runningHorizontalShake: 0.4
-  runningVerticalShake: 0.4
+  runningHorizontalShake: 0
+  runningVerticalShake: 0
   runningSpeed: 16
-  bobAmount: 0.08
-  bobSpeed: 14
+  bobAmount: 0.05
+  bobSpeed: 10
   runKey: 304
   transitionSpeed: 8
 --- !u!1 &2035274266
