@@ -63,7 +63,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    //
+
+    public float GetCurrentTime()
+    {
+        return currentTime;
+    }
+
+    public bool GetHasWon()
+    {
+        return hasWon;
+    }
+
+    public bool GetGameOverShown()
+    {
+        return gameOverShown;
+    }
+
+    //
+
+    public void GameOver()
     {
         if (gameOverShown) return;
 
