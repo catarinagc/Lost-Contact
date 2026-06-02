@@ -508,8 +508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndingCutscene
   nextSceneName: MainMenu
   scrollingText: {fileID: 1643312284}
-  scrollSpeed: 80
-  startY: -1500
+  scrollSpeed: 90
+  startY: -1350
   endY: 5000
   minimumTimeBeforeSkip: 0.5
 --- !u!1 &1068126113
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndingCutscene
   nextSceneName: MainMenu
   scrollingText: {fileID: 0}
-  scrollSpeed: 80
+  scrollSpeed: 90
   startY: -1500
   endY: 5000
   minimumTimeBeforeSkip: 0.5

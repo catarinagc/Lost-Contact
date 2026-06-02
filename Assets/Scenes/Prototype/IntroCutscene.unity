@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntroCutscene
   nextSceneName: Level
   scrollingText: {fileID: 1643312284}
-  scrollSpeed: 80
+  scrollSpeed: 90
   startY: -700
   endY: 6000
   minimumTimeBeforeSkip: 0.5

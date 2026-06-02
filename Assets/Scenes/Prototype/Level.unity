@@ -3468,7 +3468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &216737209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11230,7 +11230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &788022789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15388,7 +15388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1063921975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20177,7 +20177,6 @@ MonoBehaviour:
   dataFilePath: 
   dataFileName: 
   explorerCurrentPosition: {x: 0, y: 0, z: 0}
-  explorerPositionsList: []
   explorerDistanceTravelled: 0.001
   minutesAlive: 0
   secondsAlive: 0
@@ -27968,7 +27967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2021962358
 RectTransform:
   m_ObjectHideFlags: 0

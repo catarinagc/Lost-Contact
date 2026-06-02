@@ -41,7 +41,11 @@ public class VHSCameraShake : MonoBehaviour
 
     void Update()
     {
-        bool isRunning = Input.GetKey(runKey);
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        bool isMoving = Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f;
+        bool isRunning = Input.GetKey(runKey) && isMoving;
 
         float targetHorizontalShake = isRunning ? runningHorizontalShake : normalHorizontalShake;
         float targetVerticalShake = isRunning ? runningVerticalShake : normalVerticalShake;
