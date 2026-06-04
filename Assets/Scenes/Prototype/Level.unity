@@ -2735,23 +2735,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.58
+      value: 26.08
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.42
+      value: -1.94
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2802,7 +2802,7 @@ PrefabInstance:
       addedObject: {fileID: 91590448}
     - targetCorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 91590447}
+      addedObject: {fileID: 91590449}
   m_SourcePrefab: {fileID: 100100000, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
 --- !u!4 &91590445 stripped
 Transform:
@@ -2814,7 +2814,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
   m_PrefabInstance: {fileID: 91590444}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &91590447
+--- !u!114 &91590448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91590446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
+  puzzleUIBehaviour: {fileID: 0}
+  crosshair: {fileID: 74702350}
+  player: {fileID: 1211717316}
+  room: {fileID: 820017573}
+  roomColor: 0
+--- !u!65 &91590449
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2834,24 +2851,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.1999999, y: 1.4276162, z: 0.19999997}
-  m_Center: {x: -0.99999994, y: 0.7, z: 0.10773545}
---- !u!114 &91590448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91590446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUIBehaviour: {fileID: 0}
-  crosshair: {fileID: 74702350}
-  player: {fileID: 1211717316}
-  room: {fileID: 820017573}
-  roomColor: 0
+  m_Center: {x: -0.99999994, y: 1.113808, z: 0.10773545}
 --- !u!1001 &92534701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7272,8 +7272,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 28.541655, y: 6.615017, z: 39.5}
-  m_Center: {x: 43.395958, y: -0.3650651, z: 32.299957}
+  m_Size: {x: 26.664864, y: 6.615017, z: 38.01573}
+  m_Center: {x: 43.50826, y: -0.3650651, z: 32.290424}
 --- !u!1 &226023518
 GameObject:
   m_ObjectHideFlags: 0
@@ -13160,15 +13160,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13176,7 +13176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.864
+      value: -1.97
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13227,7 +13227,7 @@ PrefabInstance:
       addedObject: {fileID: 391333049}
     - targetCorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 391333048}
+      addedObject: {fileID: 391333050}
   m_SourcePrefab: {fileID: 100100000, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
 --- !u!4 &391333046 stripped
 Transform:
@@ -13239,7 +13239,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
   m_PrefabInstance: {fileID: 391333045}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &391333048
+--- !u!114 &391333049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391333047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
+  puzzleUIBehaviour: {fileID: 0}
+  crosshair: {fileID: 74702350}
+  player: {fileID: 1211717316}
+  room: {fileID: 222732685}
+  roomColor: 0
+--- !u!65 &391333050
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13258,25 +13275,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1999999, y: 1.4276162, z: 1}
-  m_Center: {x: -0.99999994, y: 0.7, z: 0.10773545}
---- !u!114 &391333049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391333047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUIBehaviour: {fileID: 0}
-  crosshair: {fileID: 74702350}
-  player: {fileID: 1211717316}
-  room: {fileID: 222732685}
-  roomColor: 0
+  m_Size: {x: 1.2000002, y: 1.4276162, z: 0.20000002}
+  m_Center: {x: -1.0000001, y: 1.113808, z: 0.10773547}
 --- !u!1001 &392457550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21841,7 +21841,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2002439897}
   - {fileID: 1678920046}
   - {fileID: 552244089}
   - {fileID: 811776001}
@@ -29218,8 +29217,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 15.306438, y: 4.1181116, z: 15.682083}
-  m_Center: {x: 20.155746, y: -2.5771155, z: 81.665886}
+  m_Size: {x: 14.537075, y: 4.1181116, z: 15.476685}
+  m_Center: {x: 19.771065, y: -2.5771155, z: 81.768585}
 --- !u!1 &821140748
 GameObject:
   m_ObjectHideFlags: 0
@@ -30813,7 +30812,7 @@ PrefabInstance:
       addedObject: {fileID: 855678648}
     - targetCorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 855678647}
+      addedObject: {fileID: 855678649}
   m_SourcePrefab: {fileID: 100100000, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
 --- !u!4 &855678645 stripped
 Transform:
@@ -30825,7 +30824,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
   m_PrefabInstance: {fileID: 855678644}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &855678647
+--- !u!114 &855678648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855678646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
+  puzzleUIBehaviour: {fileID: 0}
+  crosshair: {fileID: 74702350}
+  player: {fileID: 1211717316}
+  room: {fileID: 2030703938}
+  roomColor: 0
+--- !u!65 &855678649
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30844,25 +30860,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 1}
-  m_Center: {x: -0.7, y: 1, z: 0.5}
---- !u!114 &855678648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855678646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUIBehaviour: {fileID: 0}
-  crosshair: {fileID: 74702350}
-  player: {fileID: 1211717316}
-  room: {fileID: 2030703938}
-  roomColor: 0
+  m_Size: {x: 1.1999999, y: 1.4276162, z: 0.19999997}
+  m_Center: {x: -0.99999994, y: 1.113808, z: 0.10773545}
 --- !u!4 &855967487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3038710741535673580, guid: cc189c418f97f3741846828fb93559f0, type: 3}
@@ -38884,8 +38883,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 35.36989, y: 4.7734814, z: 22.856934}
-  m_Center: {x: 46.32789, y: -0.70093215, z: 78.29823}
+  m_Size: {x: 34.592407, y: 4.7734814, z: 21.733215}
+  m_Center: {x: 46.71663, y: -0.700932, z: 78.86009}
 --- !u!114 &1091155638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50707,23 +50706,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 115.28
+      value: 114.68
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.864
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50774,7 +50773,7 @@ PrefabInstance:
       addedObject: {fileID: 1455935144}
     - targetCorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1455935143}
+      addedObject: {fileID: 1455935145}
   m_SourcePrefab: {fileID: 100100000, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
 --- !u!4 &1455935141 stripped
 Transform:
@@ -50786,7 +50785,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
   m_PrefabInstance: {fileID: 1455935140}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1455935143
+--- !u!114 &1455935144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455935142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
+  puzzleUIBehaviour: {fileID: 645614192}
+  crosshair: {fileID: 74702350}
+  player: {fileID: 1211717316}
+  room: {fileID: 2027758850}
+  roomColor: 0
+--- !u!65 &1455935145
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50805,25 +50821,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 1}
-  m_Center: {x: -0.7, y: 1, z: 0.5}
---- !u!114 &1455935144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455935142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUIBehaviour: {fileID: 645614190}
-  crosshair: {fileID: 74702350}
-  player: {fileID: 1211717316}
-  room: {fileID: 2027758850}
-  roomColor: 0
+  m_Size: {x: 1.1999999, y: 1.4276162, z: 0.19999997}
+  m_Center: {x: -0.99999994, y: 1.113808, z: 0.10773545}
 --- !u!1001 &1457813668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59337,15 +59336,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59353,7 +59352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.42
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 2628933153559642624, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59404,7 +59403,7 @@ PrefabInstance:
       addedObject: {fileID: 1735959719}
     - targetCorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1735959718}
+      addedObject: {fileID: 1735959720}
   m_SourcePrefab: {fileID: 100100000, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
 --- !u!4 &1735959716 stripped
 Transform:
@@ -59416,7 +59415,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6807838139565698250, guid: 9a8c9d8dbf3196c44814baf04ae9ff15, type: 3}
   m_PrefabInstance: {fileID: 1735959715}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1735959718
+--- !u!114 &1735959719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735959717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
+  puzzleUIBehaviour: {fileID: 0}
+  crosshair: {fileID: 74702350}
+  player: {fileID: 1211717316}
+  room: {fileID: 1091155638}
+  roomColor: 0
+--- !u!65 &1735959720
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59436,24 +59452,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.1999999, y: 1.4276162, z: 0.19999997}
-  m_Center: {x: -0.99999994, y: 0.7, z: 0.10773545}
---- !u!114 &1735959719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735959717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010cf4ac32b798648a9b1618d0a3646d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTerminal
-  puzzleUIBehaviour: {fileID: 0}
-  crosshair: {fileID: 74702350}
-  player: {fileID: 1211717316}
-  room: {fileID: 1091155638}
-  roomColor: 0
+  m_Center: {x: -0.99999994, y: 1.113808, z: 0.10773545}
 --- !u!1001 &1736072671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67549,59 +67548,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3038710741535673580, guid: cc189c418f97f3741846828fb93559f0, type: 3}
   m_PrefabInstance: {fileID: 1941901168}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2002439895
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2002439897}
-  - component: {fileID: 2002439896}
-  m_Layer: 0
-  m_Name: CrewPuzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2002439896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002439895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37745157e07efd742b3ce1d0989d5ce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CrewPuzzle
-  terminal: {fileID: 0}
-  roomColor: 0
-  wrongCodeText: {fileID: 0}
-  dropdown: {fileID: 0}
-  content: {fileID: 0}
-  contentText: {fileID: 0}
-  inputCode: {fileID: 0}
-  correctCode: 0
-  correctPerson: 
---- !u!4 &2002439897
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002439895}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -872.1504, y: -537.8385, z: -3.63471}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 645614188}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2004443885
 GameObject:
   m_ObjectHideFlags: 0
@@ -68602,8 +68548,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 16.228577, y: 6.6, z: 15.193232}
-  m_Center: {x: 117.411316, y: 0, z: -15.632552}
+  m_Size: {x: 16.228577, y: 6.6, z: 14.8928585}
+  m_Center: {x: 117.411316, y: 0, z: -15.286412}
 --- !u!4 &2029884552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3038710741535673580, guid: cc189c418f97f3741846828fb93559f0, type: 3}
@@ -68669,8 +68615,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 11.008965, y: 2.774585, z: 2.2639847}
-  m_Center: {x: -1.4341676, y: -0.51270735, z: 57.255085}
+  m_Size: {x: 7.1184316, y: 2.774585, z: 2.2639847}
+  m_Center: {x: -3.3794343, y: -0.51270735, z: 57.255085}
 --- !u!114 &2030703938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72034,7 +71980,7 @@ Transform:
   m_GameObject: {fileID: 5146128487740935572}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 120.93, y: -2.5, z: -72.02}
+  m_LocalPosition: {x: 120.93, y: -3.5, z: -72.02}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:

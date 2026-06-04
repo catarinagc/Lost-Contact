@@ -48,6 +48,12 @@ public class WirePuzzle : MonoBehaviour, IPuzzle
                 }
             }
 
+            if (pendingWire != null)
+            {
+                Destroy(pendingWire.gameObject);
+                pendingWire = null;
+                pendingFromButton = null;
+            }
             // start drawing a pending wire from this number button
             pendingFromButton = clickedButton.GetComponent<RectTransform>();
             pendingWire = CreateWire();
