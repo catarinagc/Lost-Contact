@@ -155,23 +155,9 @@ public class GameManager : MonoBehaviour
         timerText.color = gameOverShown ? Color.red : originalColor;
     }
 
-    // private void PreparePuzzles()
-    // {
-    //     foreach (PuzzleTerminal terminal in puzzleTerminals)
-    //     {
-    //         int randPuzzle = Random.Range(0, puzzles.Count);
-    //         terminal.puzzleUI = puzzles[randPuzzle];
-    //     }
-    // }
-
     // GameManager.cs
     private void PreparePuzzles()
     {
-        // foreach (var mb in puzzleObjects)
-        // {
-        //     Debug.Log($"Type: {mb.GetType().FullName}, Interfaces: {string.Join(", ", mb.GetType().GetInterfaces().Select(i => i.FullName))}");
-        // }
-
         puzzles = puzzleObjects.Cast<IPuzzle>().ToList();
         List<IPuzzle> shuffled = puzzles.OrderBy(_ => Random.value).ToList();
 

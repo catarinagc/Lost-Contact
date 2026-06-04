@@ -16,23 +16,60 @@ public class CrewPuzzle : MonoBehaviour, IPuzzle
     [SerializeField] TMP_InputField inputCode;
     [SerializeField] int correctCode;
     [SerializeField] string correctPerson;
-    private string[] names = { "Joana", "Diogo", "Manuel", "Carolina", "Tiago", "Marco", "Mariana", "Maria" };
-    private string[] times = { "22:00", "13:00", "5:00", "3:45", "9:30", "8:50", "14:00", "2:40"};
-
+    public int valuesAmount = 8;
+    private string[] femaleNames = { "Joana", "Carolina", "Mariana", "Maria", "Margarida", "Daniela", "Marta", "Beatriz", "Manuela", "Renata" };
+    private string[] maleNames = { "Diogo", "Manuel", "Tiago", "Marco", "Daniel", "Ricardo", "Martim", "Emanuel"};
+    private string[] times = { "01:20", "04:05", "06:30", "07:10", "10:25", "11:50", "12:00", "15:15", "16:40", "17:55", "18:30", "19:05", 
+    "20:50", "21:20", "23:45", "14:00", "22:00", "03:45", "08:50", "05:00", "13:00", "02:40", "09:30"};
+    private int[] codes = {2010, 6663, 9380, 3126, 7002, 0999, 5770, 5100, 6431, 8525, 8950, 1001, 2071, 
+    0472, 2348, 8178, 4442, 0332, 1213, 0976, 2453, 8941, 5555};
+    private int maleCount;
+    private int femaleCount;
+    List<string> shuffledTimes;
+    List<int> shuffledCodes;
     public void CleanCode()
     {
         inputCode.text = "";
     }
 
-    private void PrepareDropdown()
+    private void PrepareDropdown(List<string> finalNames)
     {
         dropdown.ClearOptions();
-        dropdown.AddOptions(new List<string>(names));
+        dropdown.AddOptions(finalNames);
     }
 
-    private void CreatePairs()
+    private List<string> CreatePairs()
     {
-        List<string> shuffledTimes = new List<string>(times);
+        maleCount = Random.Range(1, valuesAmount);
+        femaleCount = valuesAmount - maleCount;
+
+        List<string> maleList = new List<string>(maleNames);
+        List<string> femaleList = new List<string>(femaleNames);
+        List<string> finalNames = new List<string>();
+
+        for (int i = 0; i < maleCount; i++)
+        {
+            int index = Random.Range(0, maleList.Count);
+            finalNames.Add(maleList[index]);
+            maleList.RemoveAt(index);
+        }
+
+        for (int i = 0; i < femaleCount; i++)
+        {
+            int index = Random.Range(0, femaleList.Count);
+            finalNames.Add(femaleList[index]);
+            femaleList.RemoveAt(index);
+        }
+
+        // Shuffle finalNames so males and females aren't grouped
+        for (int i = finalNames.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            (finalNames[i], finalNames[randomIndex]) = (finalNames[randomIndex], finalNames[i]);
+        }
+
+        shuffledTimes = new List<string>(times);
+        shuffledCodes = new List<int>(codes);
 
         for (int i = shuffledTimes.Count - 1; i > 0; i--)
         {
@@ -40,16 +77,19 @@ public class CrewPuzzle : MonoBehaviour, IPuzzle
 
             (shuffledTimes[i], shuffledTimes[randomIndex]) =
                 (shuffledTimes[randomIndex], shuffledTimes[i]);
+            (shuffledCodes[i], shuffledCodes[randomIndex]) =
+                (shuffledCodes[randomIndex], shuffledCodes[i]); 
         }
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < names.Length; i++)
+        for (int i = 0; i < finalNames.Count; i++)
         {
-            sb.AppendLine($"{names[i]} - {shuffledTimes[i]}");
+            sb.AppendLine($"{finalNames[i]} - {shuffledTimes[i]}");
         }
 
         contentText.text = sb.ToString();
+        return finalNames;
     }
 
     public void SubmitCode()
@@ -99,13 +139,161 @@ public class CrewPuzzle : MonoBehaviour, IPuzzle
         PreparePuzzle();
     }
 
+    private string getEarliestRecord(List<string> finalNames)
+    {
+        int currentSmallestIndex = -1;
+        int currentSmallestHour = 24;
+        int currentSmallestMinuts = 59;
+        for (int i = 0; i< valuesAmount; i++)
+        {
+            string[] parts = shuffledTimes[i].Split(':');
+            int hour = int.Parse(parts[0]);
+            int minute = int.Parse(parts[1]);
+            if (hour < currentSmallestHour)
+            {
+                currentSmallestHour = hour;
+                currentSmallestMinuts = minute;
+                currentSmallestIndex = i;
+            } else if (hour == currentSmallestHour && minute < currentSmallestMinuts)
+            {
+                currentSmallestHour = hour;
+                currentSmallestMinuts = minute;
+                currentSmallestIndex = i;
+            }
+        }
+        return finalNames[currentSmallestIndex];
+    }
+
+    private string getLatestRecord(List<string> finalNames)
+    {
+        int currentSmallestIndex = -1;
+        int currentSmallestHour = 0;
+        int currentSmallestMinuts = 0;
+        for (int i = 0; i< valuesAmount; i++)
+        {
+            string[] parts = shuffledTimes[i].Split(':');
+            int hour = int.Parse(parts[0]);
+            int minute = int.Parse(parts[1]);
+            if (hour > currentSmallestHour)
+            {
+                currentSmallestHour = hour;
+                currentSmallestMinuts = minute;
+                currentSmallestIndex = i;
+            } else if (hour == currentSmallestHour && minute > currentSmallestMinuts)
+            {
+                currentSmallestHour = hour;
+                currentSmallestMinuts = minute;
+                currentSmallestIndex = i;
+            }
+        }
+        return finalNames[currentSmallestIndex];
+    }
+
+    private string getSecondLatestFemaleRecord(List<string> finalNames)
+    {
+        int latestIndex = 0;
+        int secondLatestIndex = 0;
+        int latestHour = 0, latestMinute = 0;
+        int secondLatestHour = 0, secondLatestMinute = 0;
+
+        for (int i = 0; i < valuesAmount; i++)
+        {
+            if (!IsFemale(finalNames[i])) continue;
+            string[] parts = shuffledTimes[i].Split(':');
+            int hour = int.Parse(parts[0]);
+            int minute = int.Parse(parts[1]);
+
+            if (hour > latestHour || (hour == latestHour && minute > latestMinute))
+            {
+                // Current latest becomes second latest
+                secondLatestHour = latestHour;
+                secondLatestMinute = latestMinute;
+                secondLatestIndex = latestIndex;
+
+                // Update latest
+                latestHour = hour;
+                latestMinute = minute;
+                latestIndex = i;
+            }
+            else if (hour > secondLatestHour || (hour == secondLatestHour && minute > secondLatestMinute))
+            {
+                secondLatestHour = hour;
+                secondLatestMinute = minute;
+                secondLatestIndex = i;
+            }
+        }
+
+        return finalNames[secondLatestIndex];
+    }
+
+
+    private string getThirdEarliestMaleRecord(List<string> finalNames)
+    {
+        int firstIndex = 0, secondIndex = 0, thirdIndex = 0;
+        int firstHour = 24, firstMinute = 59;
+        int secondHour = 24, secondMinute = 59;
+        int thirdHour = 24, thirdMinute = 59;
+
+        for (int i = 0; i < valuesAmount; i++)
+        {
+            if (IsFemale(finalNames[i])) continue;
+            string[] parts = shuffledTimes[i].Split(':');
+            int hour = int.Parse(parts[0]);
+            int minute = int.Parse(parts[1]);
+
+            if (hour < firstHour || (hour == firstHour && minute < firstMinute))
+            {
+                // Cascade down
+                thirdHour = secondHour; thirdMinute = secondMinute; thirdIndex = secondIndex;
+                secondHour = firstHour; secondMinute = firstMinute; secondIndex = firstIndex;
+
+                firstHour = hour; firstMinute = minute; firstIndex = i;
+            }
+            else if (hour < secondHour || (hour == secondHour && minute < secondMinute))
+            {
+                thirdHour = secondHour; thirdMinute = secondMinute; thirdIndex = secondIndex;
+
+                secondHour = hour; secondMinute = minute; secondIndex = i;
+            }
+            else if (hour < thirdHour || (hour == thirdHour && minute < thirdMinute))
+            {
+                thirdHour = hour; thirdMinute = minute; thirdIndex = i;
+            }
+        }
+
+        return finalNames[thirdIndex];
+    }
+
+    private bool IsFemale(string name) => System.Array.IndexOf(femaleNames, name) >= 0;
+
+    private void PrepareSolution(List<string> finalNames)
+    {
+        string name;
+        int code;
+        if (maleCount == femaleCount && getEarliestRecord(finalNames).Length == 7)
+        {
+            name = getSecondLatestFemaleRecord(finalNames);
+        } else if (maleCount > 3 && getLatestRecord(finalNames).Length == 6)
+        {
+            name = getEarliestRecord(finalNames);
+        } else if (femaleCount > 4 && getLatestRecord(finalNames).Length == 5)
+        {
+            name = getThirdEarliestMaleRecord(finalNames);
+        } else
+        {
+            name = getEarliestRecord(finalNames);
+        }
+        correctPerson = name;
+        int nameIndex = finalNames.IndexOf(name);
+        correctCode = shuffledCodes[nameIndex];
+    }
+
     private void PreparePuzzle()
     {
-        correctCode = 5555;
-        correctPerson = "Maria";
+        List<string> finalNames = CreatePairs();
+        PrepareDropdown(finalNames);
+        PrepareSolution(finalNames);
         inputCode.text = "";
-        PrepareDropdown();
-        CreatePairs();
     }
 
     public void Restart(RoomColors roomColor)

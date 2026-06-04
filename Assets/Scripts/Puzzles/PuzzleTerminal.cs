@@ -56,8 +56,9 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
         room.UnlockDoors();
     }
 
-    public void PreparePuzzle()
+    public void PreparePuzzle(RoomColors roomColor)
     {
+        this.roomColor = roomColor;
         puzzleUI.SetTerminal(this);
         puzzleUI.Restart(roomColor);
     }

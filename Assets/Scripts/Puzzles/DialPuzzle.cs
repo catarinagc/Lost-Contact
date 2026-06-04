@@ -11,6 +11,7 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
     [SerializeField] GameObject wrongCodeText;
     [SerializeField] PuzzleTerminal terminal;
     [SerializeField] TMP_Text valueText;
+    private int startValue;
     private int currentValue;
     [SerializeField] int correctValue;
 
@@ -19,19 +20,15 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
         PreparePuzzle();
     }
 
-    public void Up()
+    public void OnClick()
     {
         currentValue += 1;
-        if (currentValue == 10)
-            currentValue = 0;
         UpdateScreen();
     }
 
-    public void Down()
+    public void RestartShownValue()
     {
-        currentValue -= 1;
-        if (currentValue == -1)
-            currentValue = 9;
+        currentValue = startValue;
         UpdateScreen();
     }
 
@@ -58,6 +55,7 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
         StartCoroutine(ShowWrongCodeCoroutine());
         CleanCode();
     }
+    
     IEnumerator ShowWrongCodeCoroutine()
     {
         wrongCodeText.SetActive(true);
@@ -73,8 +71,20 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
 
     private void PreparePuzzle()
     {
-        correctValue = 8;
+        correctValue = Random.Range(0, 20);
         currentValue = 0;
+        startValue = correctValue;
+        switch(roomColor)
+        {
+            case RoomColors.Blue:
+                correctValue = currentValue + 8;
+                break;
+            case RoomColors.Green:
+                correctValue = currentValue + 10;
+                break;
+            default:
+                break;
+        }
         UpdateScreen();
     }
 

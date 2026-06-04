@@ -4,6 +4,7 @@ public class PuzzleRoom : MonoBehaviour
 {
     [SerializeField] List<Door> doorsToLock;
     [SerializeField] PuzzleTerminal terminal;
+    public RoomColors roomColor;
     private bool isFirstTime = true;
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +12,7 @@ public class PuzzleRoom : MonoBehaviour
         if (other.CompareTag("Player") && isFirstTime)
         {
             Debug.Log("LOCK");
-            terminal.PreparePuzzle();
+            terminal.PreparePuzzle(roomColor);
             isFirstTime = false;
             foreach( Door door in doorsToLock)
             {

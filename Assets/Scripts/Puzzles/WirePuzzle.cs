@@ -214,7 +214,17 @@ public class WirePuzzle : MonoBehaviour, IPuzzle
         currentIndex = -1;
         currentCorrect = 0;
         currentConnected = 0;
-        correctOrder = new[] { "A", "B", "C", "D", "E" };
+        switch (roomColor)
+        {
+            case RoomColors.Blue:
+                correctOrder = new[] { "D", "C", "B", "E", "A" };
+                break;
+            case RoomColors.Green:
+                correctOrder = new[] { "E", "A", "B", "C", "B" };
+                break;
+            default:
+                break;
+        }
         connected = new string[correctOrder.Length];
         for (int i = 0; i < connected.Length; i++)
             connected[i] = "";
