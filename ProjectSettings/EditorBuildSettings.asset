@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Prototype/IntroCutscene.unity
     guid: bf0a894da8f2cdf449520e8ae414c511
   - enabled: 1
-    path: Assets/Scenes/Prototype/Level.unity
+    path: Assets/Scenes/Prototype/Old_Level.unity
     guid: 10e99564868a3874d90b1b550b3cc167
   - enabled: 1
     path: Assets/Scenes/Prototype/EndingCutscene.unity
