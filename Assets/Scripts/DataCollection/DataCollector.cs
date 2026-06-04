@@ -31,7 +31,14 @@ public class DataCollector : MonoBehaviour
 
     private void Awake()
     {
-        explorerID = ExplorerIDManager.Instance.explorerID;
+        if (ExplorerIDManager.Instance != null)
+        {
+            explorerID = ExplorerIDManager.Instance.explorerID;
+        }
+        else
+        {
+            explorerID = 999999;
+        }
         //
         dataFilePath = Path.Combine(Application.persistentDataPath, "Data");
         dataFileName = "LOST_CONTACT_DATA.csv";
