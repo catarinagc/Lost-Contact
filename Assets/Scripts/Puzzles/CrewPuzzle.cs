@@ -27,6 +27,23 @@ public class CrewPuzzle : MonoBehaviour, IPuzzle
     private int femaleCount;
     List<string> shuffledTimes;
     List<int> shuffledCodes;
+    private bool isReady = false;
+
+    //Apenas aqui por causa da interface, nao preciso chamar
+    public void OnPuzzleOpened()
+    {
+        isReady = false;
+        StartCoroutine(EnableAfterFrame());
+    }
+
+    private IEnumerator EnableAfterFrame()
+    {
+        // Wait 2 frames to let the opening click fully pass
+        yield return null;
+        yield return null;
+        isReady = true;
+    }
+
     public void CleanCode()
     {
         inputCode.text = "";
@@ -134,10 +151,10 @@ public class CrewPuzzle : MonoBehaviour, IPuzzle
         terminal.FinishedPuzzle();
     }
 
-    void Awake()
-    {
-        PreparePuzzle();
-    }
+    // void Awake()
+    // {
+    //     PreparePuzzle();
+    // }
 
     private string getEarliestRecord(List<string> finalNames)
     {
@@ -270,15 +287,15 @@ public class CrewPuzzle : MonoBehaviour, IPuzzle
     {
         string name;
         int code;
-        if (maleCount == femaleCount && getEarliestRecord(finalNames).Length == 7)
-        {
-            name = getSecondLatestFemaleRecord(finalNames);
-        } else if (maleCount > 3 && getLatestRecord(finalNames).Length == 6)
-        {
-            name = getEarliestRecord(finalNames);
-        } else if (femaleCount > 4 && getLatestRecord(finalNames).Length == 5)
+        if (maleCount == femaleCount && getLatestRecord(finalNames).Length == 5)
         {
             name = getThirdEarliestMaleRecord(finalNames);
+        } else if (maleCount > 3 && getEarliestRecord(finalNames).Length == 7)
+        {
+            name = getSecondLatestFemaleRecord(finalNames);
+        } else if (femaleCount > 4 && getLatestRecord(finalNames).Length == 6)
+        {
+            name = getEarliestRecord(finalNames);
         } else
         {
             name = getEarliestRecord(finalNames);

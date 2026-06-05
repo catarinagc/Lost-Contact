@@ -17,8 +17,26 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
     private string[] greenCodes = { "ᛞ" , "ᛈ" , "ᚢ", "ᛤ", "ᛉ", "ᛗ", "ᚠ", "ᚡ", "ᛟ", "ᛦ"};
     private string[] blueCodes = { "ᚡ" , "ᛟ" , "ᛉ", "ᛞ", "ᛦ", "ᛗ", "ᛈ", "ᛤ", "ᚢ", "ᚠ"};
     public RoomColors roomColor;
+
+    private bool isReady = false;
+
+    public void OnPuzzleOpened()
+    {
+        isReady = false;
+        StartCoroutine(EnableAfterFrame());
+    }
+
+    private IEnumerator EnableAfterFrame()
+    {
+        // Wait 2 frames to let the opening click fully pass
+        yield return null;
+        yield return null;
+        isReady = true;
+    }
+
     public void PressButton(Button clickedButton)
     {
+        if (!isReady) return;
         string buttonText = clickedButton.GetComponentInChildren<TMP_Text>().text;
 
         int digit = int.Parse(buttonText);
@@ -112,13 +130,14 @@ public class NumOrderPuzzle : MonoBehaviour, IPuzzle
         }
     }
 
-    void Awake()
-    {
-        PreparePuzzle();
-    }
+    // void Awake()
+    // {
+    //     PreparePuzzle();
+    // }
 
     private void PreparePuzzle()
     {
+        CleanCode();
         codeDisplayText.text = "";
         correctOrder = PrepareCode();
         switch (roomColor)

@@ -23,8 +23,25 @@ public class WirePuzzle : MonoBehaviour, IPuzzle
     private RectTransform pendingWire;
     private RectTransform pendingFromButton;
 
+    private bool isReady = false;
+
+    public void OnPuzzleOpened()
+    {
+        isReady = false;
+        StartCoroutine(EnableAfterFrame());
+    }
+
+    private IEnumerator EnableAfterFrame()
+    {
+        // Wait 2 frames to let the opening click fully pass
+        yield return null;
+        yield return null;
+        isReady = true;
+    }
+
     public void OnClick(Button clickedButton)
     {
+        if (!isReady) return;
         string buttonText = clickedButton.GetComponentInChildren<TMP_Text>().text.ToLower();
 
         if (int.TryParse(buttonText, out int parsedValue))
@@ -204,23 +221,24 @@ public class WirePuzzle : MonoBehaviour, IPuzzle
         wrongCodeText.SetActive(false);
     }
 
-    void Awake()
-    {
-        PreparePuzzle();
-    }
+    // void Awake()
+    // {
+    //     PreparePuzzle();
+    // }
 
     private void PreparePuzzle()
     {
+        CleanCode();
         currentIndex = -1;
         currentCorrect = 0;
         currentConnected = 0;
         switch (roomColor)
         {
             case RoomColors.Blue:
-                correctOrder = new[] { "D", "C", "B", "E", "A" };
+                correctOrder = new[] { "E", "A", "B", "C", "B" };
                 break;
             case RoomColors.Green:
-                correctOrder = new[] { "E", "A", "B", "C", "B" };
+                correctOrder = new[] { "D", "C", "B", "E", "A" };
                 break;
             default:
                 break;

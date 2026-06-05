@@ -19,6 +19,7 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
 
     public bool Interact()
     {
+        Debug.Log("INTERACT");
         if (isOpen || isSolved)
             return false;
 
@@ -30,7 +31,9 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
     {
         isOpen = true;
 
+        PreparePuzzle(roomColor);
         puzzleUI.gameObject.SetActive(true);
+        puzzleUI.OnPuzzleOpened();
         crosshair.SetActive(false);
 
         Cursor.lockState = CursorLockMode.None;
@@ -58,6 +61,7 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
 
     public void PreparePuzzle(RoomColors roomColor)
     {
+        Debug.Log("UFA");
         this.roomColor = roomColor;
         puzzleUI.SetTerminal(this);
         puzzleUI.Restart(roomColor);

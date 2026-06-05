@@ -6,4 +6,5 @@ public interface IPuzzle
     void Restart(RoomColors roomColor);
     void ClosePuzzle();
     void SetTerminal(PuzzleTerminal terminal);
+    void OnPuzzleOpened();
 }

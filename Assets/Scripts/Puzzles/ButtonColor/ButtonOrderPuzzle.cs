@@ -20,13 +20,30 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
     public RoomColors roomColor;
     private Coroutine currentTextRoutine;
 
-    void Awake()
+    private bool isReady = false;
+
+    public void OnPuzzleOpened()
     {
-        PreparePuzzle();
+        isReady = false;
+        StartCoroutine(EnableAfterFrame());
     }
+
+    private IEnumerator EnableAfterFrame()
+    {
+        // Wait 2 frames to let the opening click fully pass
+        yield return null;
+        yield return null;
+        isReady = true;
+    }
+
+    // void Awake()
+    // {
+    //     PreparePuzzle();
+    // }
 
     private void PreparePuzzle()
     {
+        CleanCode();
         currentIndex = 0;
         pressedIndex = 0;
         foreach(Button button in gameObject.GetComponentsInChildren<Button>())
@@ -48,6 +65,7 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 
     public void PressButton(Button clickedButton)
     {
+        if (!isReady) return;
         // Ignore already pressed buttons
         if (!clickedButton.interactable)
             return;
@@ -95,15 +113,7 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 
         wrongText.SetActive(false);
 
-        currentIndex = 0;
-        pressedIndex = 0;
-
-        Button[] buttons = GetComponentsInChildren<Button>();
-
-        foreach (Button button in buttons)
-        {
-            button.interactable = true;
-        }
+        CleanCode();
     }
 
     void PuzzleSolved()
@@ -134,5 +144,18 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
     public void SetTerminal(PuzzleTerminal terminal)
     {
         this.terminal = terminal;
+    }
+
+    private void CleanCode()
+    {
+        currentIndex = 0;
+        pressedIndex = 0;
+
+        Button[] buttons = GetComponentsInChildren<Button>();
+
+        foreach (Button button in buttons)
+        {
+            button.interactable = true;
+        }
     }
 }

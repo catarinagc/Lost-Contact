@@ -158,13 +158,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2188619846404660066, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870913517304907869, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665201252127774988, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919432984236758402, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7150926831085997093, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
       propertyPath: m_Name
       value: ProfileDoor Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7326091841594156731, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443583007157260045, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144832284182946036, guid: 9ce165dd222504a7dada2f13901e2cbd, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

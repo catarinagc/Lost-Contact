@@ -140,7 +140,7 @@ public class DataCollector : MonoBehaviour
         string csvFilePath = Path.Combine(folderPath, fileName);
         File.AppendAllText(csvFilePath, line, Encoding.UTF8);
 
-        Debug.LogWarning("CSV DATA WRITTEN INTO FILE");
+        //Debug.LogWarning("CSV DATA WRITTEN INTO FILE");
     }
 
     public IEnumerator WriteTXTData(string folderPath, string fileName)
@@ -153,7 +153,7 @@ public class DataCollector : MonoBehaviour
 
             string currentPositionString = $"{explorerCurrentPosition}\n";
             File.AppendAllText(txtFilePath, currentPositionString, Encoding.UTF8);
-            Debug.Log("POSITION DATA WRITTEN IN EXPLORER " + explorerID + " TXT FILE");
+            //Debug.Log("POSITION DATA WRITTEN IN EXPLORER " + explorerID + " TXT FILE");
         }
     }
 
@@ -186,6 +186,6 @@ public class DataCollector : MonoBehaviour
                 "");
         }
 
-        Debug.Log("Text file for explorer " + explorerID + "created at the following path: " + textFilePath);
+        //Debug.Log("Text file for explorer " + explorerID + "created at the following path: " + textFilePath);
     }
 }

@@ -14,17 +14,35 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
     private int startValue;
     private int currentValue;
     [SerializeField] int correctValue;
+    bool isFirstTime = true;
 
-    void Awake()
+    private bool isReady = false;
+
+    public void OnPuzzleOpened()
     {
-        PreparePuzzle();
+        isReady = false;
+        StartCoroutine(EnableAfterFrame());
+    }
+
+    private IEnumerator EnableAfterFrame()
+    {
+        // Wait 2 frames to let the opening click fully pass
+        yield return null;
+        yield return null;
+        isReady = true;
     }
 
     public void OnClick()
     {
+        if (isFirstTime)
+        {
+            isFirstTime = false;
+            return;
+        }
         currentValue += 1;
         UpdateScreen();
     }
+
 
     public void RestartShownValue()
     {
@@ -65,22 +83,22 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
 
     void CleanCode()
     {
-        currentValue = 0;
+        currentValue = startValue;
         UpdateScreen();
     }
 
     private void PreparePuzzle()
     {
-        correctValue = Random.Range(0, 20);
-        currentValue = 0;
-        startValue = correctValue;
+        CleanCode();
+        startValue = Random.Range(0, 20);
+        currentValue = startValue;
         switch(roomColor)
         {
             case RoomColors.Blue:
-                correctValue = currentValue + 8;
+                correctValue = startValue + 8;
                 break;
             case RoomColors.Green:
-                correctValue = currentValue + 10;
+                correctValue = startValue + 10;
                 break;
             default:
                 break;
@@ -92,6 +110,7 @@ public class DialPuzzle : MonoBehaviour, IPuzzle
     {
         this.roomColor = roomColor;
         PreparePuzzle();
+        isFirstTime = true;
     }
 
     public void ClosePuzzle()
