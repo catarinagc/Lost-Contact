@@ -28947,7 +28947,7 @@ MonoBehaviour:
   - {fileID: 339641954}
   - {fileID: 2102966637}
   terminal: {fileID: 91590448}
-  roomColor: 0
+  roomColor: 1
 --- !u!65 &820017574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57484,8 +57484,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.8589134, y: 2.659241, z: 2.5837097}
-  m_Center: {x: -0.015474796, y: -0.5215262, z: 7.302685}
+  m_Size: {x: 6.9924893, y: 2.659241, z: 2.5837097}
+  m_Center: {x: -0.44868684, y: -0.5215262, z: 7.302685}
 --- !u!114 &1692532547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57501,7 +57501,7 @@ MonoBehaviour:
   doorsToLock:
   - {fileID: 479852459}
   terminal: {fileID: 2116252377}
-  roomColor: 0
+  roomColor: 1
 --- !u!65 &1692532549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67900,7 +67900,7 @@ MonoBehaviour:
   doorsToLock:
   - {fileID: 1643751280}
   terminal: {fileID: 1779576568}
-  roomColor: 0
+  roomColor: 1
 --- !u!65 &2030703941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67942,7 +67942,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 10.969195, y: 3.3378646, z: 0.3399124}
-  m_Center: {x: -1.4050765, y: -0.391209, z: 58.6}
+  m_Center: {x: -1.4050765, y: -0.391209, z: 59}
 --- !u!1001 &2033052329
 PrefabInstance:
   m_ObjectHideFlags: 0
