@@ -45,15 +45,13 @@ public class GameManager : MonoBehaviour
             if (currentTime > 0)
             {
                 currentTime -= Time.unscaledDeltaTime;
-
-                if (currentTime <= 0)
-                {
-                    currentTime = 0;
-                    GameOver();
-                }
+            }else
+            {
+                currentTime = 0;
+                GameOver();
+            }
 
                 UpdateTimerDisplay(currentTime);
-            }
         }
 
         if (reverseTimer)

@@ -15,6 +15,7 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
 
     private bool isOpen = false;
     private bool isSolved = false;
+    private bool isFirstTime = true;
 
 
     public bool Interact()
@@ -30,8 +31,11 @@ public class PuzzleTerminal : MonoBehaviour, IInteractable
     private void OpenPuzzle()
     {
         isOpen = true;
-
-        PreparePuzzle(roomColor);
+        if (isFirstTime)
+        {
+            PreparePuzzle(roomColor);
+            isFirstTime = false;
+        }
         puzzleUI.gameObject.SetActive(true);
         puzzleUI.OnPuzzleOpened();
         crosshair.SetActive(false);
