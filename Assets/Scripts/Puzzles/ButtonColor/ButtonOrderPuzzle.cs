@@ -138,6 +138,11 @@ public class ButtonOrderPuzzle : MonoBehaviour, IPuzzle
 
     public void ClosePuzzle()
     {
+        if (currentTextRoutine != null)
+        {
+            StopCoroutine(currentTextRoutine);
+            CleanCode();
+        }
         terminal.ClosePuzzle();
     }
 

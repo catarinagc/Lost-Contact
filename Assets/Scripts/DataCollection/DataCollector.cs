@@ -63,31 +63,22 @@ public class DataCollector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (writeInCSVFile)
+        if (gameManager.GetCurrentTime() <= 0.0f)
         {
-            if (gameManager.GetCurrentTime() <= 0.0f)
-            {
-                gameOver = true;
-            }
-            else if (gameManager.GetCurrentTime() >= 0.0f && gameManager.GetHasWon())
-            {
-                gameOver = true;
-                explorerWon = true;
-            }
-            WriteCSVData(dataFilePath, dataFileName);
+            gameOver = true;
+            writeInCSVFile = true;
+        }
+        else if (gameManager.GetCurrentTime() >= 0.0f && gameManager.GetHasWon())
+        {
+            gameOver = true;
+            explorerWon = true;
+            writeInCSVFile = true;
+        }
+        
+        if (gameOver && writeInCSVFile)
+        {
             writeInCSVFile = false;
-        }
-
-        //DEBUG COMMAND: TEST DATA EXTRACTION PURPOSES ONLY
-        if (Input.GetKeyDown(KeyCode.F12))
-        {
-            gameManager.WinGame();
-            writeInCSVFile = true;
-        }
-        if (Input.GetKeyDown(KeyCode.F11))
-        {
-            gameManager.GameOver();
-            writeInCSVFile = true;
+            WriteCSVData(dataFilePath, dataFileName);
         }
     }
 
