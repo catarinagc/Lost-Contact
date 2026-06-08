@@ -11,6 +11,9 @@ public class IntroCutsceneController : MonoBehaviour
     [SerializeField] private TMP_Text warningText;
     [SerializeField] private TMP_Text titleText;
 
+    [Header("Objects To Hide When Title Appears")]
+    [SerializeField] private GameObject[] objectsToHideWhenTitleAppears;
+
     [Header("Static Overlay")]
     [SerializeField] private RawImage staticOverlay;
     [SerializeField] private int staticTextureSize = 128;
@@ -28,7 +31,7 @@ public class IntroCutsceneController : MonoBehaviour
     [SerializeField] private AudioSource glitchSource;
 
     [Header("Scene")]
-    [SerializeField] private string nextSceneName = "GameScene";
+    [SerializeField] private string nextSceneName = "Level";
 
     [Header("Timing")]
     [SerializeField] private float letterDelay = 0.035f;
@@ -152,6 +155,8 @@ public class IntroCutsceneController : MonoBehaviour
 
         if (warningText != null)
             warningText.gameObject.SetActive(false);
+        
+        HideObjectsForTitle();
 
         if (titleText != null)
             titleText.gameObject.SetActive(true);
@@ -164,7 +169,7 @@ public class IntroCutsceneController : MonoBehaviour
         yield return new WaitForSeconds(finalTitleDuration);
 
         if (!string.IsNullOrEmpty(nextSceneName))
-            SceneManager.LoadScene(nextSceneName);
+            SceneLoadingHelper.LoadSceneWithLoadingScreen(nextSceneName);
     }
 
     private void SetupStaticOverlay()
@@ -246,5 +251,14 @@ public class IntroCutsceneController : MonoBehaviour
         Color c = staticOverlay.color;
         c.a = opacity;
         staticOverlay.color = c;
+    }
+
+    private void HideObjectsForTitle()
+    {
+        foreach (GameObject obj in objectsToHideWhenTitleAppears)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
     }
 }

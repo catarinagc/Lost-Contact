@@ -695,6 +695,10 @@ MonoBehaviour:
   mainText: {fileID: 1643312285}
   warningText: {fileID: 968852712}
   titleText: {fileID: 1499976025}
+  objectsToHideWhenTitleAppears:
+  - {fileID: 235988585}
+  - {fileID: 1942780218}
+  - {fileID: 1993978399}
   staticOverlay: {fileID: 721426961}
   staticTextureSize: 256
   staticUpdateInterval: 0.08
