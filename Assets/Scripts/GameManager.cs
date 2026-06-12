@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     private List<IPuzzle> puzzles;
     [SerializeField] List<PuzzleTerminal> puzzleTerminals;
 
+    [Header("Game Over")]
+    [SerializeField] private GameOverUI gameOverUI;
+    private bool gameOverScreenOpen = false;
+
     private float currentTime;
     private bool timerRunning = true;
     private bool reverseTimer = false;
@@ -85,18 +89,27 @@ public class GameManager : MonoBehaviour
         if (gameOverShown) return;
 
         gameOverShown = true;
+        gameOverScreenOpen = true;
+
         timerRunning = false;
-        reverseTimer = true;
+        reverseTimer = false;
+
+        currentTime = 0;
+
+        // Important: close any puzzle before showing Game Over UI
+        CloseAllPuzzles();
 
         timerText.text = "GAME OVER\n00:00";
         timerText.color = Color.red;
 
-        currentTime = 0;
+        if (gameOverUI != null)
+            gameOverUI.ShowGameOver();
     }
+
 
     public void WinGame()
     {
-        if (hasWon || gameOverShown) return;
+        if (hasWon || gameOverScreenOpen) return;
 
         hasWon = true;
 
@@ -107,6 +120,21 @@ public class GameManager : MonoBehaviour
         timerText.text = timerText.text + "\nYOU WON!";
 
         StartCoroutine(LoadEndingCutsceneAfterDelay());
+    }
+
+    public void ContinueAfterGameOver()
+    {
+        if (!gameOverShown || hasWon) return;
+
+        gameOverScreenOpen = false;
+
+        timerRunning = false;
+        reverseTimer = true;
+
+        currentTime = 0;
+
+        timerText.color = Color.red;
+        UpdateTimerDisplay(currentTime);
     }
 
     private IEnumerator LoadEndingCutsceneAfterDelay()
@@ -164,6 +192,15 @@ public class GameManager : MonoBehaviour
             IPuzzle assigned = shuffled[i % shuffled.Count];
             puzzleTerminals[i].puzzleUI = assigned;
             assigned.gameObject.SetActive(false);
+        }
+    }
+
+    private void CloseAllPuzzles()
+    {
+        foreach (PuzzleTerminal terminal in puzzleTerminals)
+        {
+            if (terminal != null)
+                terminal.ClosePuzzle();
         }
     }
 
